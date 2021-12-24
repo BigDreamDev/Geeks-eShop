@@ -15,7 +15,38 @@
       :cart-items-qty="0"
       :is-sticky="false"
       :is-nav-visible="false"
-    />
+      class="z-10"
+    >
+      <template #navigation>
+        <SfDropdown :is-open="isOpen" title="Choose size" :persistent="false">
+          <template #opener>
+            <button @click="isOpen = true">Opener</button>
+          </template>
+          <SfList>
+            <SfListItem>
+              <button class="color-primary" :aria-disabled="false" :link="null">
+                Add to cart
+              </button>
+            </SfListItem>
+            <SfListItem>
+              <button class="color-primary" :aria-disabled="false" :link="null">
+                Add to cart
+              </button>
+            </SfListItem>
+            <SfListItem>
+              <button class="color-primary" :aria-disabled="false" :link="null">
+                Add to cart
+              </button>
+            </SfListItem>
+            <SfListItem>
+              <button class="color-primary" :aria-disabled="false" :link="null">
+                Add to cart
+              </button>
+            </SfListItem>
+          </SfList>
+        </SfDropdown>
+      </template>
+    </SfHeader>
     <Nuxt />
     <SfFooter
       :column="4"
@@ -179,6 +210,7 @@ import {
   SfLink,
   SfMenuItem,
   SfInput,
+  SfDropdown,
 } from '@storefront-ui/vue'
 export default {
   components: {
@@ -188,6 +220,12 @@ export default {
     SfLink,
     SfMenuItem,
     SfInput,
+    SfDropdown,
+  },
+  data() {
+    return {
+      isOpen: false,
+    }
   },
 }
 </script>
