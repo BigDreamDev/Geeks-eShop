@@ -7,3 +7,11 @@ body {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*,
+::before,
+::after {
+  background-repeat: no-repeat;
+  box-sizing: inherit;
+  object-fit: cover !important;
+}

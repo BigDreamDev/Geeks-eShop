@@ -20,7 +20,7 @@
         >
         <ins class="sf-price__special display-none"></ins>
       </div>
-      <SfRating score="4"></SfRating>
+      <!-- <SfRating score="4"></SfRating> -->
       <hr class="text-gray-300 mt-4" />
     </div>
     <div class="sm:col-span-1 col-span-2 px-6 max-w-prose order-3">
@@ -45,12 +45,8 @@
 
 <script>
 import gql from 'graphql-tag'
-import { SfRating } from '@storefront-ui/vue'
 
 export default {
-  components: {
-    SfRating,
-  },
   data() {
     return {
       laptop: [],

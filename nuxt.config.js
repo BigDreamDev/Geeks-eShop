@@ -28,8 +28,18 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
 
+    // '@nuxtjs/tailwindcss',
+
     '@nuxt/postcss8',
+
+    '@nuxtjs/vuetify',
   ],
+
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    treeShake: true,
+    // defaultAssets: true,
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -39,8 +49,6 @@ export default {
     '@nuxtjs/pwa',
 
     '@nuxtjs/apollo',
-
-    '@storefront-ui/nuxt',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

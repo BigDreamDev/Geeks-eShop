@@ -1,0 +1,13 @@
+$color-pack: false;
+// https://vuetifyjs.com/en/styles/colors/#sass-color-pack
+
+@import '~vuetify/src/styles/styles.sass';
+
+@each $name, $value in $utilities {
+  $utilities: map-merge(
+    $utilities,
+    (
+      $name: false,
+    )
+  );
+}

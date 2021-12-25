@@ -1,52 +1,48 @@
 <template>
   <div>
-    <SfHero>
-      <SfHeroItem
-        title="ROG Republic of Gamers"
-        subtitle="Collection 2021"
-        button-text="Learn more"
-        background="#ffffff"
-        image="/b1.jpg"
-      />
-      <SfHeroItem
-        title="Colorful summer dresses are already in store"
-        subtitle="Summer Collection 2019"
-        button-text="Learn more"
-        background="#FCE4EC"
-        image="/b2.jpg"
-      />
-    </SfHero>
+    <v-carousel v-model="model" height="600">
+      <v-carousel-item v-for="(item, i) in items" :key="i">
+        <v-sheet height="100%" tile>
+          <v-row class="fill-height" align="center" justify="center">
+            <img class="object-cover w-full" :src="item.url" />
+          </v-row>
+        </v-sheet>
+      </v-carousel-item>
+    </v-carousel>
     <laptops></laptops>
+    <div>
+      <v-parallax height="600" src="/offer.webp">
+        <v-row class="items-center" justify="center">
+          <v-col cols="12">
+            <h1 class="font-bold text-4xl">The Ultimate Holiday Gifts</h1>
+            <h4 class="subheading pl-2">Limited Offer!</h4>
+          </v-col>
+        </v-row>
+      </v-parallax>
+    </div>
+    <ProductCard></ProductCard>
+    <Deals></Deals>
   </div>
 </template>
 
 <script>
-import { SfHero } from '@storefront-ui/vue'
 export default {
-  components: {
-    SfHero,
+  data() {
+    return {
+      model: 0,
+      items: [
+        {
+          id: 1,
+          url: 'b1.jpg',
+        },
+        {
+          id: 2,
+          url: 'b2.jpg',
+        },
+      ],
+    }
   },
 }
 </script>
 
-<style lang="scss" scoped>
-::v-deep .sf-hero-item__title,
-::v-deep .sf-hero-item__subtitle {
-  color: white;
-}
-::v-deep .sf-arrow {
-  --icon-color: #ffffff;
-  --button-background: transparent !important;
-}
-::v-deep .sf-arrow:hover {
-  --icon-color: red;
-}
-// ::v-deep .sf-button {
-//   --button-background: red;
-// }
-
-::v-deep .sf-hero__control--left,
-.sf-hero__control--right .sf-button {
-  background: transparent;
-}
-</style>
+<style lang="scss" scoped></style>
