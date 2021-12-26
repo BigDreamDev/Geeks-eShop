@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -38,7 +40,7 @@ export default {
   ],
 
   snipcart: {
-    key: 'ZDhmZjQwNDEtNGM1YS00MmMxLWIwOTYtMmE2NThmYTY2ZTM0NjM3NzYwNzUyNDczOTY1NDQx',
+    key: process.env.SNIPCART,
   },
 
   vuetify: {
@@ -55,6 +57,8 @@ export default {
     '@nuxtjs/pwa',
 
     '@nuxtjs/apollo',
+
+    '@nuxtjs/dotenv',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios

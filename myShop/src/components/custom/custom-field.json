@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_custom_custom_fields",
+  "info": {
+    "displayName": "custom_field",
+    "icon": "arrow-alt-circle-down",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean"
+    },
+    "options": {
+      "type": "string"
+    }
+  }
+}

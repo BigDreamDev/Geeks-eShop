@@ -51,6 +51,12 @@
     },
     "info": {
       "type": "richtext"
+    },
+    "custom_field": {
+      "displayName": "custom_field",
+      "type": "component",
+      "repeatable": true,
+      "component": "custom.custom-field"
     }
   }
 }

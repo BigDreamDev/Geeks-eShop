@@ -20,6 +20,18 @@
         >
         <ins class="sf-price__special display-none"></ins>
       </div>
+      <button
+        class="snipcart-add-item mt-4 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        :data-item-id="laptop.data.id"
+        :data-item-price="laptop.data.attributes.price"
+        :data-item-url="`${$route.fullPath}`"
+        :data-item-description="laptop.data.attributes.description"
+        :data-item-image="`http://localhost:1337${laptop.data.attributes.picture.data[0].attributes.url}`"
+        :data-item-name="laptop.data.attributes.Model"
+        v-bind="customFields"
+      >
+        Add to cart
+      </button>
       <!-- <SfRating score="4"></SfRating> -->
       <hr class="text-gray-300 mt-4" />
     </div>
@@ -52,6 +64,24 @@ export default {
       laptop: [],
     }
   },
+  computed: {
+    customFields() {
+      return this.laptop.data.attributes.custom_field
+        .map(({ Model, required, options }) => ({
+          name: Model,
+          required,
+          options,
+        }))
+        .map((x, index) =>
+          Object.entries(x).map(([key, value]) => ({
+            [`data-item-custom${index + 1}-${key.toString().toLowerCase()}`]:
+              value,
+          }))
+        )
+        .reduce((acc, curr) => acc.concat(curr), [])
+        .reduce((acc, curr) => ({ ...acc, ...curr }))
+    },
+  },
   apollo: {
     laptop: {
       query: gql`
@@ -65,6 +95,11 @@ export default {
                 price
                 Specifications
                 longDescription
+                custom_field {
+                  title
+                  required
+                  options
+                }
                 description
                 info
                 picture {
