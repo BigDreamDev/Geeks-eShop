@@ -18,7 +18,7 @@ export default {
   css: ['@assets/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ src: '~/plugins/swiper.js', mode: 'client' }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -33,7 +33,13 @@ export default {
     '@nuxt/postcss8',
 
     '@nuxtjs/vuetify',
+
+    '@nuxtjs/snipcart',
   ],
+
+  snipcart: {
+    key: 'ZDhmZjQwNDEtNGM1YS00MmMxLWIwOTYtMmE2NThmYTY2ZTM0NjM3NzYwNzUyNDczOTY1NDQx',
+  },
 
   vuetify: {
     customVariables: ['~/assets/variables.scss'],

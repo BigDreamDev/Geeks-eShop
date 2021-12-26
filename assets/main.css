@@ -15,3 +15,8 @@ body {
   box-sizing: inherit;
   object-fit: cover !important;
 }
+
+.v-application .primary--text {
+  color: #a82514 !important;
+  caret-color: #a82514 !important;
+}

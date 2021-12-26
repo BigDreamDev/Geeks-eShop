@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-carousel v-model="model" height="600">
+    <v-carousel v-model="model" :height="carouselHeight">
       <v-carousel-item v-for="(item, i) in items" :key="i">
         <v-sheet height="100%" tile>
           <v-row class="fill-height" align="center" justify="center">
@@ -11,7 +11,7 @@
     </v-carousel>
     <laptops></laptops>
     <div>
-      <v-parallax height="600" src="/offer.webp">
+      <v-parallax height="500" src="/offer.webp">
         <v-row class="items-center" justify="center">
           <v-col cols="12">
             <h1 class="font-bold text-4xl">The Ultimate Holiday Gifts</h1>
@@ -20,8 +20,8 @@
         </v-row>
       </v-parallax>
     </div>
-    <ProductCard></ProductCard>
     <Deals></Deals>
+    <ProductSwiper></ProductSwiper>
   </div>
 </template>
 
@@ -41,6 +41,15 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    carouselHeight() {
+      if (process.client) {
+        return window.innerHeight - 64
+      } else {
+        return 650
+      }
+    },
   },
 }
 </script>
