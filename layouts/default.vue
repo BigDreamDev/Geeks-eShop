@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar>
       <!-- <v-btn text color="black" class="hover:cursor-pointer">Laptops</v-btn> -->
-      <Navbar></Navbar>
+      <Navbar class="mb-4"></Navbar>
     </v-app-bar>
     <v-main>
       <nuxt />

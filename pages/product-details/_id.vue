@@ -1,6 +1,6 @@
 <template>
-  <div v-if="laptop.length != 0" class="grid grid-cols-2 mt-4 mb-8">
-    <div class="p-8 col-span-2 sm:col-span-1 order-2 sm:order-1">
+  <div v-if="laptop" class="grid grid-cols-2 mt-4 mb-8">
+    <div class="px-8 col-span-2 sm:col-span-1 order-2 sm:order-1">
       <img
         :src="`http://localhost:1337${laptop.data.attributes.picture.data[0].attributes.url}`"
         alt=""
@@ -11,14 +11,13 @@
         {{ laptop.data.attributes.longDescription }}
       </h2>
       <hr class="text-gray-300 mt-4" />
-      <div class="sf-price mt-4">
-        <span class="sf-price__regular"
-          >Price: ${{ laptop.data.attributes.price }}</span
-        >
-        <del class="sf-price__old display-none"
+      <div class="mt-4">
+        <span class="text-2xl">Price: ${{ laptop.data.attributes.price }}</span>
+        <del class="display-none text-sm"
           >${{ laptop.data.attributes.price + 100 }}</del
         >
-        <ins class="sf-price__special display-none"></ins>
+        <ins class="display-none"></ins>
+        <v-rating v-model="rating" large></v-rating>
       </div>
       <button
         class="snipcart-add-item mt-4 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
@@ -39,7 +38,9 @@
       <h3 class="text-xl font-bold my-4 underline decoration-purple-500">
         About this item
       </h3>
-      <p class="whitespace-pre-wrap">{{ laptop.data.attributes.info }}</p>
+      <p class="whitespace-pre-wrap">
+        {{ laptop.data.attributes.info }}
+      </p>
     </div>
     <div class="order-4 px-6 sm:col-span-1 my-4 col-span-2">
       <h2 class="text-xl underline decoration-red-500 font-bold mb-4">Specs</h2>
@@ -56,12 +57,12 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
-
+import laptopQuery from '~/apollo/queries/laptop'
 export default {
   data() {
     return {
-      laptop: [],
+      laptop: null,
+      rating: 4,
     }
   },
   computed: {
@@ -84,44 +85,52 @@ export default {
   },
   apollo: {
     laptop: {
-      query: gql`
-        query getLaptop($id: ID!) {
-          laptop(id: $id) {
-            data {
-              id
-              attributes {
-                Model
-                inStock
-                price
-                Specifications
-                longDescription
-                custom_field {
-                  title
-                  required
-                  options
-                }
-                description
-                info
-                picture {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      `,
+      prefetch: true,
+      query: laptopQuery,
       variables() {
         return {
           id: this.$route.params.id,
         }
       },
     },
+    // laptop: {
+    //   query: gql`
+    //     query getLaptop($id: ID!) {
+    //       laptop(id: $id) {
+    //         data {
+    //           id
+    //           attributes {
+    //             Model
+    //             inStock
+    //             price
+    //             Specifications
+    //             longDescription
+    //             custom_field {
+    //               title
+    //               required
+    //               options
+    //             }
+    //             description
+    //             info
+    //             picture {
+    //               data {
+    //                 attributes {
+    //                   url
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   `,
   },
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.mdi-star::before {
+  content: '\F04CE';
+  color: #a82514;
+}
+</style>

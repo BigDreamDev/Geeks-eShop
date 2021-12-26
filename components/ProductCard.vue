@@ -67,7 +67,6 @@
 </template>
 
 <script>
-// import gql from 'graphql-tag'
 export default {
   props: {
     laptop: {
@@ -77,37 +76,8 @@ export default {
   },
   data() {
     return {
-      // laptop: [],
       rating: 4,
     }
   },
-  // apollo: {
-  //   laptops: {
-  //     query: gql`
-  //       query {
-  //         laptops {
-  //           data {
-  //             id
-  //             attributes {
-  //               Model
-  //               Date
-  //               description
-  //               inStock
-  //               price
-  //               Specifications
-  //               picture {
-  //                 data {
-  //                   attributes {
-  //                     url
-  //                   }
-  //                 }
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     `,
-  //   },
-  // },
 }
 </script>

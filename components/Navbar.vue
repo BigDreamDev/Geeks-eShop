@@ -6,7 +6,7 @@
     <button class="snipcart-checkout flex items-center">
       <Cart />
       <span
-        class="snipcart-total-price ml-3 font-semibold text-sm text-indigo-500"
+        class="snipcart-total-price ml-3 font-semibold text-sm text-main"
       ></span>
     </button>
   </div>

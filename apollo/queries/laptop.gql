@@ -1,0 +1,28 @@
+query Laptop($id: ID!) {
+  laptop(id: $id) {
+    data {
+      id
+      attributes {
+        Model
+        inStock
+        price
+        Specifications
+        longDescription
+        custom_field {
+          title
+          required
+          options
+        }
+        description
+        info
+        picture {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}

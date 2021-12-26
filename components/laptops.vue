@@ -3,18 +3,16 @@
     <h2 class="pl-8 font-bold text-4xl my-6 underline decoration-main">
       Gaming Laptops
     </h2>
-    <div
-      v-if="laptops.data.length > 0"
-      class="flex flex-row flex-wrap justify-evenly"
-    >
+    <div v-if="laptops.data" class="flex flex-row flex-wrap justify-evenly">
       <nuxt-link
         v-for="laptop in laptops.data"
         :key="laptop.id"
         :to="`/product-details/${laptop.id}`"
+        class="mb-8"
       >
-        <v-card class="w-80 p-3">
+        <v-card class="w-80 h-full p-3 mb-8">
           <img
-            class="h-64 object-contain"
+            class="h-64 object-contain mx-auto"
             :src="`http://localhost:1337${laptop.attributes.picture.data[0].attributes.url}`"
             alt=""
           />
@@ -39,7 +37,7 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
+import laptopsQuery from '~/apollo/queries/laptops'
 export default {
   data() {
     return {
@@ -49,30 +47,8 @@ export default {
   },
   apollo: {
     laptops: {
-      query: gql`
-        query {
-          laptops {
-            data {
-              id
-              attributes {
-                Model
-                Date
-                description
-                inStock
-                price
-                Specifications
-                picture {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      `,
+      prefetch: true,
+      query: laptopsQuery,
     },
   },
 }

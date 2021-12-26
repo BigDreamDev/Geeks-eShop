@@ -11,7 +11,7 @@
     </v-carousel>
     <laptops></laptops>
     <div>
-      <v-parallax height="550" src="/offer.webp">
+      <v-parallax height="600" src="/offer.webp">
         <v-row class="items-center" justify="center">
           <v-col cols="12">
             <h1 class="font-bold text-4xl">The Ultimate Holiday Gifts</h1>

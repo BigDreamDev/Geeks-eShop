@@ -1,0 +1,22 @@
+query Laptops {
+  laptops {
+    data {
+      id
+      attributes {
+        Model
+        Date
+        description
+        inStock
+        price
+        Specifications
+        picture {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}

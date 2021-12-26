@@ -14,15 +14,12 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
-
 import { Swiper } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
-
+import laptopsQuery from '~/apollo/queries/laptops'
 export default {
   components: {
     Swiper,
-    // SwiperSlide,
   },
   data() {
     return {
@@ -57,30 +54,8 @@ export default {
   },
   apollo: {
     laptops: {
-      query: gql`
-        query {
-          laptops {
-            data {
-              id
-              attributes {
-                Model
-                Date
-                description
-                inStock
-                price
-                Specifications
-                picture {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      `,
+      prefetch: true,
+      query: laptopsQuery,
     },
   },
 }
