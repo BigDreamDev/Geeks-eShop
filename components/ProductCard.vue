@@ -1,5 +1,5 @@
 <template>
-  <div v-if="laptop" class="flex flex-row flex-wrap justify-evenly">
+  <div v-if="product" class="flex flex-row flex-wrap justify-evenly">
     <!-- v-for="laptop in laptops.data"
       :key="laptop.id" -->
     <!-- :loading="(laptops.length = 0)" -->
@@ -15,14 +15,14 @@
       <img
         height="250"
         class="object-contain h-64 mx-auto"
-        :src="`http://localhost:1337${laptop.attributes.picture.data[0].attributes.url}`"
+        :src="`http://localhost:1337${product.attributes.picture.data[0].attributes.url}`"
       />
 
-      <v-card-title>{{ laptop.attributes.Model }} </v-card-title>
+      <v-card-title>{{ product.attributes.model }} </v-card-title>
 
       <v-divider class="mx-4"></v-divider>
 
-      <v-card-text> {{ laptop.attributes.price }}$ </v-card-text>
+      <v-card-text> {{ product.attributes.price }}$ </v-card-text>
 
       <v-card-text>
         <v-row align="center" class="mx-0">
@@ -46,7 +46,7 @@
       <v-card-text class="p-4">
         <v-chip-group active-class="red-500" column class="pr-4">
           <v-chip
-            v-for="(val, spec, index) in laptop.attributes.Specifications"
+            v-for="(val, spec, index) in product.attributes.specifications"
             :key="index"
             ><span class="capitalize">{{ spec }}</span> : {{ val }}</v-chip
           >
@@ -57,7 +57,7 @@
         <v-btn
           class="bg-main white--text ml-2"
           text
-          :to="`/product-details/${laptop.id}`"
+          :to="`/product-details/${product.id}`"
         >
           More Information
         </v-btn>
@@ -69,7 +69,7 @@
 <script>
 export default {
   props: {
-    laptop: {
+    product: {
       type: Object,
       required: true,
     },

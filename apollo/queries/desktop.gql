@@ -1,5 +1,5 @@
-query Laptop($id: ID!) {
-  laptop(id: $id) {
+query Desktop($id: ID!) {
+  desktop(id: $id) {
     data {
       id
       attributes {
@@ -13,8 +13,6 @@ query Laptop($id: ID!) {
           required
           options
         }
-        description
-        info
         picture {
           data {
             attributes {

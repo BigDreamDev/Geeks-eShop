@@ -1,11 +1,11 @@
 <template>
   <swiper class="swiper" :options="swiperOption">
     <swiper-slide
-      v-for="laptop in laptops.data"
-      :key="laptop.id"
+      v-for="product in currentProduct.data"
+      :key="product.id"
       class="d-flex justify-center"
     >
-      <product-card :laptop="laptop"></product-card>
+      <product-card :product="product"></product-card>
     </swiper-slide>
 
     <div slot="button-prev" class="swiper-button-prev"></div>
@@ -17,6 +17,7 @@
 import { Swiper } from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 import laptopsQuery from '~/apollo/queries/laptops'
+import desktopsQuery from '~/apollo/queries/desktops'
 export default {
   components: {
     Swiper,
@@ -24,6 +25,7 @@ export default {
   data() {
     return {
       laptops: [],
+      desktops: [],
       swiperOption: {
         slidesPerView: 3,
         spaceBetween: 10,
@@ -52,10 +54,24 @@ export default {
       },
     }
   },
+  computed: {
+    currentProduct() {
+      const product = this.$store.getters.currentTab
+      if (product === 0) return this.laptops
+      else if (product === 1) return this.desktops
+      else {
+        return this.laptops
+      }
+    },
+  },
   apollo: {
     laptops: {
       prefetch: true,
       query: laptopsQuery,
+    },
+    desktops: {
+      prefetch: false,
+      query: desktopsQuery,
     },
   },
 }

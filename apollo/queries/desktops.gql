@@ -1,20 +1,18 @@
-query Laptop($id: ID!) {
-  laptop(id: $id) {
+query Desktops {
+  desktops {
     data {
       id
       attributes {
         model
+        longDescription
         inStock
         price
         specifications
-        longDescription
         custom_field {
           title
           required
           options
         }
-        description
-        info
         picture {
           data {
             attributes {

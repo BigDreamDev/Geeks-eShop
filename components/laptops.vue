@@ -16,7 +16,7 @@
             :src="`http://localhost:1337${laptop.attributes.picture.data[0].attributes.url}`"
             alt=""
           />
-          <v-card-title>{{ laptop.attributes.Model }}</v-card-title>
+          <v-card-title>{{ laptop.attributes.model }}</v-card-title>
           <p class="pl-3">Price: {{ laptop.attributes.price }}$</p>
           <div class="flex flex-row pl-3">
             <span>Rating:</span>

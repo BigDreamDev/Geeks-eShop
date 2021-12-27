@@ -1,7 +1,7 @@
 <template>
   <div class="my-8">
     <h2 class="text-center font-bold text-black text-4xl">Deals</h2>
-    <v-tabs fixed-tabs>
+    <v-tabs v-model="currentTab" fixed-tabs>
       <v-tab
         v-for="(tab, index) in tabs"
         :key="index"
@@ -19,6 +19,16 @@ export default {
     return {
       tabs: ['Laptops', 'Desktops', 'Mobile', 'Monitors'],
     }
+  },
+  computed: {
+    currentTab: {
+      get() {
+        return this.$store.getters.currentTab
+      },
+      set(newValue) {
+        return this.$store.commit('changeCurrentTab', newValue)
+      },
+    },
   },
 }
 </script>

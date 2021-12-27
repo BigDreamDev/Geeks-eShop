@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "desktops",
+  "info": {
+    "singularName": "desktop",
+    "pluralName": "desktops",
+    "displayName": "Desktops",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "model": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "info": {
+      "type": "text"
+    },
+    "longDescription": {
+      "type": "text"
+    },
+    "inStock": {
+      "type": "boolean"
+    },
+    "specifications": {
+      "type": "json"
+    },
+    "picture": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    },
+    "custom_field": {
+      "type": "component",
+      "repeatable": true,
+      "component": "custom.custom-field"
+    }
+  }
+}

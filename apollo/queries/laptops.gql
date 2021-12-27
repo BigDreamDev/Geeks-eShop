@@ -3,12 +3,12 @@ query Laptops {
     data {
       id
       attributes {
-        Model
+        model
         Date
         description
         inStock
         price
-        Specifications
+        specifications
         picture {
           data {
             attributes {
