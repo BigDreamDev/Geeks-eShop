@@ -2,7 +2,10 @@
   <div v-if="product" class="grid grid-cols-2 mt-4 mb-8">
     <div class="px-8 col-span-2 sm:col-span-1 order-2 sm:order-1">
       <img
-        :src="`http://localhost:1337${product.data.attributes.picture.data[0].attributes.url}`"
+        :src="
+          'http://localhost:1337' +
+          product.data.attributes.picture.data[0].attributes.url
+        "
         alt=""
       />
     </div>
@@ -26,14 +29,13 @@
         :data-item-id="product.data.id"
         :data-item-price="product.data.attributes.price"
         :data-item-url="`${$route.fullPath}`"
-        :data-item-description="product.data.attributes.description"
+        :data-item-description="product.data.attributes.longDescription"
         :data-item-image="`http://localhost:1337${product.data.attributes.picture.data[0].attributes.url}`"
         :data-item-name="product.data.attributes.model"
         v-bind="customFields"
       >
         Add to cart
       </button>
-      <!-- <SfRating score="4"></SfRating> -->
       <hr class="text-gray-300 mt-4" />
     </div>
     <div class="sm:col-span-1 col-span-2 px-6 max-w-prose order-3">
@@ -54,7 +56,7 @@
         >: {{ val }}
       </p>
     </div>
-    <!-- <pre>{{ laptop }}</pre> -->
+    <!-- <pre>{{ product }}</pre> -->
   </div>
 </template>
 
@@ -64,14 +66,16 @@ import desktopQuery from '~/apollo/queries/desktop'
 export default {
   data() {
     return {
+      product: null,
       laptop: null,
       desktop: null,
       rating: 4,
+      type: this.$route.query.type,
     }
   },
   computed: {
     customFields() {
-      return this.laptop.data.attributes.custom_field
+      return this.product.data.attributes.custom_field
         .map(({ model, required, options }) => ({
           name: model,
           required,
@@ -86,26 +90,20 @@ export default {
         .reduce((acc, curr) => acc.concat(curr), [])
         .reduce((acc, curr) => ({ ...acc, ...curr }))
     },
-    product() {
-      const product = this.$store.state.currentTab
-      if (product === 0) return this.laptop
-      else if (product === 1) return this.desktop
-      else return this.laptop
-    },
   },
   apollo: {
-    laptop: {
-      prefetch: false,
-      query: laptopQuery,
-      variables() {
-        return {
-          id: this.$route.params.id,
-        }
+    product: {
+      prefetch: true,
+      query() {
+        if (this.type === 'desktop') {
+          return desktopQuery
+        } else return laptopQuery
       },
-    },
-    desktop: {
-      prefetch: false,
-      query: desktopQuery,
+      update(data) {
+        if (this.type === 'desktop') {
+          return data.desktop
+        } else return data.laptop
+      },
       variables() {
         return {
           id: this.$route.params.id,

@@ -57,7 +57,10 @@
         <v-btn
           class="bg-main white--text ml-2"
           text
-          :to="`/product-details/${product.id}`"
+          :to="{
+            path: `/product-details/${product.id}`,
+            query: { type: `${product.attributes.type}` },
+          }"
         >
           More Information
         </v-btn>

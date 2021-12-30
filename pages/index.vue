@@ -4,6 +4,13 @@
       <v-carousel-item v-for="(item, i) in items" :key="i">
         <v-sheet height="100%" tile>
           <v-row class="fill-height" align="center" justify="center">
+            <div class="absolute top-32 p-3 left-6 bg-gray-900 bg-opacity-60">
+              <h2 class="text-white text-5xl">Your Favorite E-Shop</h2>
+              <p class="text-white text-2xl">Acheive more, anytime, anywhere</p>
+              <v-btn text dense class="text-white hover:text-main"
+                >Learn more</v-btn
+              >
+            </div>
             <img class="object-cover w-full" :src="item.url" />
           </v-row>
         </v-sheet>

@@ -436,6 +436,9 @@
                                   }
                                 }
                               },
+                              "type": {
+                                "type": "string"
+                              },
                               "createdAt": {
                                 "type": "string",
                                 "format": "date-time"
@@ -1432,6 +1435,9 @@
                                 }
                               }
                             },
+                            "type": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -1955,6 +1961,9 @@
                           }
                         }
                       },
+                      "type": {
+                        "type": "string"
+                      },
                       "createdAt": {
                         "type": "string",
                         "format": "date-time"
@@ -2431,6 +2440,9 @@
                                   }
                                 }
                               }
+                            },
+                            "type": {
+                              "type": "string"
                             },
                             "createdAt": {
                               "type": "string",
@@ -3337,6 +3349,9 @@
                                 }
                               }
                             },
+                            "type": {
+                              "type": "string"
+                            },
                             "createdAt": {
                               "type": "string",
                               "format": "date-time"
@@ -3870,6 +3885,9 @@
                             }
                           }
                         }
+                      },
+                      "type": {
+                        "type": "string"
                       },
                       "createdAt": {
                         "type": "string",

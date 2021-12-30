@@ -5,6 +5,7 @@ query Laptops {
       attributes {
         model
         Date
+        type
         description
         inStock
         price

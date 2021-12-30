@@ -7,7 +7,10 @@
       <nuxt-link
         v-for="laptop in laptops.data"
         :key="laptop.id"
-        :to="`/product-details/${laptop.id}`"
+        :to="{
+          path: `/product-details/${laptop.id}`,
+          query: { type: `${laptop.attributes.type}` },
+        }"
         class="mb-8"
       >
         <v-card class="w-80 h-full p-3 mb-8">

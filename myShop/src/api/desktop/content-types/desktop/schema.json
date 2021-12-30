@@ -44,6 +44,9 @@
       "type": "component",
       "repeatable": true,
       "component": "custom.custom-field"
+    },
+    "type": {
+      "type": "string"
     }
   }
 }

@@ -7,6 +7,7 @@ query Desktops {
         longDescription
         inStock
         price
+        type
         specifications
         custom_field {
           title
