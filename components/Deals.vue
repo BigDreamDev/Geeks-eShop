@@ -1,7 +1,7 @@
 <template>
-  <div class="my-8">
+  <div class="my-8 bg-gray-100">
     <h2 class="text-center font-bold text-black text-4xl">Deals</h2>
-    <v-tabs v-model="currentTab" fixed-tabs>
+    <v-tabs v-model="currentTab" mobile-break-point="100" fixed-tabs>
       <v-tab
         v-for="(tab, index) in tabs"
         :key="index"

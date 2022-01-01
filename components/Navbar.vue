@@ -9,6 +9,36 @@
         class="snipcart-total-price ml-3 font-semibold text-sm text-main"
       ></span>
     </button>
+    <!-- <v-menu v-for="(item, index) in items" :key="index" open-on-hover offset-y>
+      <template #activator="{ on, attrs }">
+        <v-btn
+          text
+          dense
+          dark
+          v-bind="attrs"
+          class="mt-1 text-main ml-4"
+          v-on="on"
+        >
+          {{ item.category }}
+        </v-btn>
+      </template>
+
+      <v-list>
+        <v-list-item v-for="laptop in item.data.data" :key="laptop">
+          <nuxt-link
+            class="text-main"
+            :to="{
+              path: `/product-details/${laptop.id}`,
+              query: { type: laptop.attributes.type },
+            }"
+          >
+            <v-list-item-title class="text-base">{{
+              laptop.attributes.model
+            }}</v-list-item-title>
+          </nuxt-link>
+        </v-list-item>
+      </v-list>
+    </v-menu> -->
     <v-menu open-on-hover offset-y>
       <template #activator="{ on, attrs }">
         <v-btn
@@ -79,7 +109,27 @@ export default {
     return {
       laptops: [],
       desktops: [],
+      items: [
+        {
+          category: 'Laptops',
+          // data: [...this.laptops],
+        },
+        {
+          category: 'Desktops',
+          // data: this.desktops.data,
+        },
+        {
+          category: 'Mobile',
+          // data: this.desktops || [],
+        },
+      ],
     }
+  },
+  created() {
+    console.log(this.laptops, 'created')
+  },
+  mounted() {
+    console.log(this.laptops, 'mounted')
   },
   apollo: {
     laptops: {

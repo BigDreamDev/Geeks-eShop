@@ -1,6 +1,12 @@
 <template>
   <div class="bg-gray-100">
-    <v-carousel v-model="model" :height="carouselHeight">
+    <v-carousel
+      v-model="model"
+      cycle
+      :interval="4000"
+      :show-arrows="false"
+      :height="carouselHeight"
+    >
       <v-carousel-item v-for="(item, i) in items" :key="i">
         <v-sheet height="100%" tile>
           <v-row class="fill-height" align="center" justify="center">
@@ -27,13 +33,18 @@
         </v-row>
       </v-parallax>
     </div>
+    <FeaturedProducts></FeaturedProducts>
     <Deals></Deals>
-    <ProductSwiper></ProductSwiper>
+    <client-only>
+      <ProductSwiper></ProductSwiper>
+    </client-only>
   </div>
 </template>
 
 <script>
+import FeaturedProducts from '~/components/FeaturedProducts.vue'
 export default {
+  components: { FeaturedProducts },
   data() {
     return {
       model: 0,

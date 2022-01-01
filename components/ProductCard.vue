@@ -1,17 +1,6 @@
 <template>
   <div v-if="product" class="flex flex-row flex-wrap justify-evenly">
-    <!-- v-for="laptop in laptops.data"
-      :key="laptop.id" -->
-    <!-- :loading="(laptops.length = 0)" -->
     <v-card class="mx-4 my-12 hover:shadow-2xl" max-width="374">
-      <!-- <template slot="progress">
-          <v-progress-linear
-            color="deep-purple"
-            height="10"
-            indeterminate
-          ></v-progress-linear>
-        </template> -->
-
       <img
         height="250"
         class="object-contain h-64 mx-auto"

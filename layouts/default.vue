@@ -6,7 +6,7 @@
     </v-app-bar>
     <v-main>
       <nuxt />
-      <div id="snipcart" hidden :data-api-key="snipcartKey"></div>
+      <div v-once id="snipcart" hidden :data-api-key="snipcartKey"></div>
     </v-main>
     <v-footer dark padless>
       <v-row justify="center" no-gutters>
@@ -58,6 +58,7 @@
 
 <script>
 export default {
+  name: 'Default',
   data() {
     return {
       snipcartKey: process.env.SNIPCART,

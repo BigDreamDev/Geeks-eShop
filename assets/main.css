@@ -20,3 +20,6 @@ body {
   color: #a82514 !important;
   caret-color: #a82514 !important;
 }
+.theme--light.v-tabs > .v-tabs-bar {
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity)) !important;
+}
