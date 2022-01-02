@@ -5,9 +5,7 @@
     </nuxt-link>
     <button class="snipcart-checkout inline-flex items-center">
       <Cart />
-      <span
-        class="snipcart-total-price ml-3 font-semibold text-sm text-main"
-      ></span>
+      <span class="snipcart-total-price ml-3 font-semibold text-sm"></span>
     </button>
     <!-- <v-menu v-for="(item, index) in items" :key="index" open-on-hover offset-y>
       <template #activator="{ on, attrs }">
@@ -46,7 +44,7 @@
           dense
           dark
           v-bind="attrs"
-          class="mt-1 text-main ml-4"
+          class="mt-1 ml-4 text-black"
           v-on="on"
         >
           Laptops
@@ -56,13 +54,13 @@
       <v-list>
         <v-list-item v-for="laptop in laptops.data" :key="laptop.id">
           <nuxt-link
-            class="text-main"
+            class=""
             :to="{
               path: `/product-details/${laptop.id}`,
               query: { type: laptop.attributes.type },
             }"
           >
-            <v-list-item-title class="text-base">{{
+            <v-list-item-title class="text-sm text-black hover:text-main">{{
               laptop.attributes.model
             }}</v-list-item-title>
           </nuxt-link>
@@ -76,7 +74,7 @@
           dense
           dark
           v-bind="attrs"
-          class="mt-1 text-main ml-3"
+          class="mt-1 ml-3 text-black"
           v-on="on"
         >
           Desktops
@@ -86,13 +84,13 @@
       <v-list>
         <v-list-item v-for="desktop in desktops.data" :key="desktop.id">
           <nuxt-link
-            class="text-main"
+            class=""
             :to="{
               path: `/product-details/${desktop.id}`,
               query: { type: desktop.attributes.type },
             }"
           >
-            <v-list-item-title class="text-base">{{
+            <v-list-item-title class="text-sm text-black hover:text-main">{{
               desktop.attributes.model
             }}</v-list-item-title>
           </nuxt-link>
