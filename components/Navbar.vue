@@ -123,6 +123,7 @@ export default {
       ],
     }
   },
+
   created() {
     console.log(this.laptops, 'created')
   },

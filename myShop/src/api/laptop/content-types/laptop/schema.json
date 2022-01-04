@@ -60,6 +60,12 @@
     },
     "type": {
       "type": "string"
+    },
+    "review": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::review.review",
+      "inversedBy": "laptops"
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white">
     <h2 class="underline decoration-main pl-8 font-bold text-4xl py-6">
-      Feature Products
+      Featured Products
     </h2>
     <v-row>
       <v-col md="6" class="relative">
@@ -12,7 +12,7 @@
             ProArt Studiobook 16 OLED
           </h2>
           <p class="mb-0">Born for Creative Pros</p>
-          <v-btn text dense class="p-0"
+          <v-btn to="/featured/1" text dense class="p-0"
             ><span class="lowercase">Learn More</span></v-btn
           >
         </div>

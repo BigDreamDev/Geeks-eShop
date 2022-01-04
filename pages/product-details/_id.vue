@@ -70,7 +70,7 @@ export default {
       laptop: null,
       desktop: null,
       rating: 4,
-      type: this.$route.query.type,
+      // type: this.$route.query.type,
     }
   },
   computed: {
@@ -89,6 +89,9 @@ export default {
         )
         .reduce((acc, curr) => acc.concat(curr), [])
         .reduce((acc, curr) => ({ ...acc, ...curr }))
+    },
+    type() {
+      return this.$route.query.type
     },
   },
   apollo: {
