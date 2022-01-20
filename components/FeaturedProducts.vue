@@ -12,7 +12,7 @@
             ProArt Studiobook 16 OLED
           </h2>
           <p class="mb-0">Born for Creative Pros</p>
-          <v-btn to="/featured/1" text dense class="p-0"
+          <v-btn to="/featured/1" text dense class="py-0 px-4"
             ><span class="lowercase">Learn More</span></v-btn
           >
         </div>
@@ -26,7 +26,7 @@
             Asus ExpertBook B3 Flip
           </h2>
           <p class="mb-0">Achieve more, anytime, anywhere</p>
-          <v-btn text dense class="p-0 lowercase"
+          <v-btn text dense class="py-0 px-4 lowercase"
             ><span>Learn More</span></v-btn
           >
         </div>

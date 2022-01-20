@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import FeaturedProducts from '~/components/FeaturedProducts.vue'
+import FeaturedProducts from "~/components/FeaturedProducts.vue"
 export default {
   components: { FeaturedProducts },
   data() {
@@ -51,11 +51,11 @@ export default {
       items: [
         {
           id: 1,
-          url: 'b1.jpg',
+          url: "b1.jpg",
         },
         {
           id: 2,
-          url: 'b2.jpg',
+          url: "b2.jpg",
         },
       ],
     }

@@ -1,5 +1,5 @@
 query Laptop($id: ID!) {
-  laptop(id: $id) {
+  product: laptop(id: $id) {
     data {
       id
       attributes {
@@ -16,6 +16,15 @@ query Laptop($id: ID!) {
         }
         description
         info
+        reviews {
+          data {
+            id
+            attributes {
+              content
+              rating
+            }
+          }
+        }
         picture {
           data {
             attributes {

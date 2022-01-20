@@ -4,10 +4,11 @@
   "info": {
     "singularName": "review",
     "pluralName": "reviews",
-    "displayName": "Review"
+    "displayName": "Review",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -25,11 +26,11 @@
         "five"
       ]
     },
-    "laptops": {
+    "laptop": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::laptop.laptop",
-      "mappedBy": "review"
+      "inversedBy": "reviews"
     }
   }
 }

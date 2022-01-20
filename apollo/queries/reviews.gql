@@ -1,0 +1,11 @@
+query reviews($id: ID!) {
+  reviews: review(id: $id) {
+    data {
+      id
+      attributes {
+        content
+        rating
+      }
+    }
+  }
+}

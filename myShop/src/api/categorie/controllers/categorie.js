@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- *  desktop controller
+ *  categorie controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::desktop.desktop');
+module.exports = createCoreController('api::categorie.categorie');

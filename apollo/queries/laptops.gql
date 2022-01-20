@@ -1,19 +1,35 @@
 query Laptops {
-  laptops {
+  laptops: categorie(id: "1") {
     data {
-      id
       attributes {
-        model
-        Date
-        type
-        description
-        inStock
-        price
-        specifications
-        picture {
+        name
+        products {
           data {
+            id
             attributes {
-              url
+              model
+              specifications
+              description
+              longDescription
+              inStock
+              price
+              reviews {
+                data {
+                  id
+                  attributes {
+                    content
+                    rating
+                  }
+                }
+              }
+              type
+              picture {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
             }
           }
         }

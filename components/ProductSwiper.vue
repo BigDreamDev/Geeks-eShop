@@ -1,7 +1,7 @@
 <template>
-  <swiper class="swiper" :options="swiperOption">
+  <swiper v-if="currentProduct.data" class="swiper" :options="swiperOption">
     <swiper-slide
-      v-for="product in currentProduct.data"
+      v-for="product in currentProduct.data.attributes.products.data"
       :key="product.id"
       class="d-flex justify-center"
     >
@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import { Swiper } from 'vue-awesome-swiper'
-import 'swiper/css/swiper.css'
-import laptopsQuery from '~/apollo/queries/laptops'
-import desktopsQuery from '~/apollo/queries/desktops'
+import { Swiper } from "vue-awesome-swiper"
+import "swiper/css/swiper.css"
+import laptopsQuery from "~/apollo/queries/laptops"
+import desktopsQuery from "~/apollo/queries/desktops"
 export default {
   components: {
     Swiper,
@@ -34,8 +34,8 @@ export default {
         loopFillGroupWithBlank: false,
 
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
         },
         breakpoints: {
           1048: {

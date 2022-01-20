@@ -4,7 +4,7 @@
   "info": {
     "singularName": "laptop",
     "pluralName": "laptops",
-    "displayName": "Laptops",
+    "displayName": "Product",
     "description": ""
   },
   "options": {
@@ -61,11 +61,17 @@
     "type": {
       "type": "string"
     },
-    "review": {
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "laptop"
+    },
+    "category": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::review.review",
-      "inversedBy": "laptops"
+      "target": "api::categorie.categorie",
+      "inversedBy": "products"
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black">
+  <div class="bg-black pb-8">
     <h1
       class="text-white text-center text-lg md:text-3xl lg:text-4xl pt-10 px-4"
     >

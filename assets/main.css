@@ -23,3 +23,13 @@ body {
 .theme--light.v-tabs > .v-tabs-bar {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity)) !important;
 }
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}

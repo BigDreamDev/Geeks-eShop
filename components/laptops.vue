@@ -5,7 +5,7 @@
     </h2>
     <div v-if="laptops.data" class="flex flex-row flex-wrap justify-evenly">
       <nuxt-link
-        v-for="laptop in laptops.data"
+        v-for="laptop in laptops.data.attributes.products.data"
         :key="laptop.id"
         :to="{
           path: `/product-details/${laptop.id}`,
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import laptopsQuery from '~/apollo/queries/laptops'
+import laptopsQuery from "~/apollo/queries/laptops"
 export default {
   data() {
     return {

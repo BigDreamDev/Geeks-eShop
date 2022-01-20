@@ -37,7 +37,7 @@
         </v-list-item>
       </v-list>
     </v-menu> -->
-    <v-menu open-on-hover offset-y>
+    <!-- <v-menu open-on-hover offset-y>
       <template #activator="{ on, attrs }">
         <v-btn
           text
@@ -96,11 +96,11 @@
           </nuxt-link>
         </v-list-item>
       </v-list>
-    </v-menu>
+    </v-menu> -->
   </div>
 </template>
 <script>
-import { gql } from 'graphql-tag'
+// import { gql } from "graphql-tag"
 
 export default {
   data() {
@@ -109,15 +109,15 @@ export default {
       desktops: [],
       items: [
         {
-          category: 'Laptops',
+          category: "Laptops",
           // data: [...this.laptops],
         },
         {
-          category: 'Desktops',
+          category: "Desktops",
           // data: this.desktops.data,
         },
         {
-          category: 'Mobile',
+          category: "Mobile",
           // data: this.desktops || [],
         },
       ],
@@ -125,43 +125,43 @@ export default {
   },
 
   created() {
-    console.log(this.laptops, 'created')
+    console.log(this.laptops, "created")
   },
   mounted() {
-    console.log(this.laptops, 'mounted')
+    console.log(this.laptops, "mounted")
   },
-  apollo: {
-    laptops: {
-      query: gql`
-        query {
-          laptops {
-            data {
-              id
-              attributes {
-                model
-                type
-              }
-            }
-          }
-        }
-      `,
-    },
-    desktops: {
-      query: gql`
-        query {
-          desktops {
-            data {
-              id
-              attributes {
-                model
-                type
-              }
-            }
-          }
-        }
-      `,
-    },
-  },
+  // apollo: {
+  //   laptops: {
+  //     query: gql`
+  //       query {
+  //         laptops {
+  //           data {
+  //             id
+  //             attributes {
+  //               model
+  //               type
+  //             }
+  //           }
+  //         }
+  //       }
+  //     `,
+  //   },
+  //   desktops: {
+  //     query: gql`
+  //       query {
+  //         desktops {
+  //           data {
+  //             id
+  //             attributes {
+  //               model
+  //               type
+  //             }
+  //           }
+  //         }
+  //       }
+  //     `,
+  //   },
+  // },
 }
 </script>
 <style>

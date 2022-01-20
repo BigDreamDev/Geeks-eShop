@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * desktop service.
+ * categorie service.
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::desktop.desktop');
+module.exports = createCoreService('api::categorie.categorie');

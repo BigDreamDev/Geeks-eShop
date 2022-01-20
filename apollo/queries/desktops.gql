@@ -1,23 +1,26 @@
-query Desktops {
-  desktops {
+query Laptops {
+  desktops: categorie(id: "2") {
     data {
-      id
       attributes {
-        model
-        longDescription
-        inStock
-        price
-        type
-        specifications
-        custom_field {
-          title
-          required
-          options
-        }
-        picture {
+        name
+        products {
           data {
+            id
             attributes {
-              url
+              model
+              specifications
+              description
+              longDescription
+              inStock
+              price
+              type
+              picture {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
             }
           }
         }
