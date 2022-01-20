@@ -36,8 +36,8 @@
           </nuxt-link>
         </v-list-item>
       </v-list>
-    </v-menu> -->
-    <!-- <v-menu open-on-hover offset-y>
+    </v-menu>  -->
+    <v-menu open-on-hover offset-y>
       <template #activator="{ on, attrs }">
         <v-btn
           text
@@ -52,12 +52,14 @@
       </template>
 
       <v-list>
-        <v-list-item v-for="laptop in laptops.data" :key="laptop.id">
+        <v-list-item
+          v-for="laptop in laptops.data.attributes.products.data"
+          :key="laptop.id"
+        >
           <nuxt-link
             class=""
             :to="{
               path: `/product-details/${laptop.id}`,
-              query: { type: laptop.attributes.type },
             }"
           >
             <v-list-item-title class="text-sm text-black hover:text-main">{{
@@ -82,12 +84,14 @@
       </template>
 
       <v-list>
-        <v-list-item v-for="desktop in desktops.data" :key="desktop.id">
+        <v-list-item
+          v-for="desktop in desktops.data.attributes.products.data"
+          :key="desktop.id"
+        >
           <nuxt-link
             class=""
             :to="{
               path: `/product-details/${desktop.id}`,
-              query: { type: desktop.attributes.type },
             }"
           >
             <v-list-item-title class="text-sm text-black hover:text-main">{{
@@ -96,12 +100,12 @@
           </nuxt-link>
         </v-list-item>
       </v-list>
-    </v-menu> -->
+    </v-menu>
   </div>
 </template>
 <script>
-// import { gql } from "graphql-tag"
-
+import LaptopsQuery from "~/apollo/queries/laptops.gql"
+import DesktopssQuery from "~/apollo/queries/desktops.gql"
 export default {
   data() {
     return {
@@ -130,38 +134,14 @@ export default {
   mounted() {
     console.log(this.laptops, "mounted")
   },
-  // apollo: {
-  //   laptops: {
-  //     query: gql`
-  //       query {
-  //         laptops {
-  //           data {
-  //             id
-  //             attributes {
-  //               model
-  //               type
-  //             }
-  //           }
-  //         }
-  //       }
-  //     `,
-  //   },
-  //   desktops: {
-  //     query: gql`
-  //       query {
-  //         desktops {
-  //           data {
-  //             id
-  //             attributes {
-  //               model
-  //               type
-  //             }
-  //           }
-  //         }
-  //       }
-  //     `,
-  //   },
-  // },
+  apollo: {
+    laptops: {
+      query: LaptopsQuery,
+    },
+    desktops: {
+      query: DesktopssQuery,
+    },
+  },
 }
 </script>
 <style>

@@ -77,23 +77,28 @@
         >: {{ val }}
       </p>
       <v-divider></v-divider>
-      <div v-if="product.data.attributes.reviews.data.length > 0">
-        <h2 class="text-xl underline decoration-blue-500 font-bold mb-4">
-          Reviews
-        </h2>
-        <p v-for="(review, i) in product.data.attributes.reviews.data" :key="i">
-          <span class="capitalize font-bold">{{
-            review.attributes.content
-          }}</span>
-          <v-rating
-            :value="calcRating(review.attributes.rating)"
-            small
-            readonly
-          ></v-rating>
-          <v-divider></v-divider>
-        </p>
+      <div>
+        <div v-if="product.data.attributes.reviews.data.length > 0">
+          <h2 class="text-xl underline decoration-blue-500 font-bold mb-4">
+            Reviews
+          </h2>
+          <p
+            v-for="(review, i) in product.data.attributes.reviews.data"
+            :key="i"
+          >
+            <span class="capitalize font-bold">{{
+              review.attributes.content
+            }}</span>
+            <v-rating
+              :value="calcRating(review.attributes.rating)"
+              small
+              readonly
+            ></v-rating>
+            <v-divider></v-divider>
+          </p>
+        </div>
         <div>
-          <h2 class="text-xl underline decoration-red-700 font-bold mb-4">
+          <h2 class="text-xl mt-4 underline decoration-red-700 font-bold mb-4">
             Add a review
           </h2>
           <v-textarea

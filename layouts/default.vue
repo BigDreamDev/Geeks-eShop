@@ -5,6 +5,17 @@
       <Navbar class="mb-4"></Navbar>
     </v-app-bar>
     <v-main>
+      <v-btn
+        v-show="fab"
+        v-scroll="onScroll"
+        fab
+        fixed
+        bottom
+        right
+        @click="scroll"
+      >
+        <v-icon class="text-main" size="24px"> mdi-arrow-up </v-icon>
+      </v-btn>
       <nuxt />
       <div v-once id="snipcart" hidden :data-api-key="snipcartKey"></div>
     </v-main>
@@ -58,13 +69,29 @@
 
 <script>
 export default {
-  name: 'Default',
+  name: "Default",
   data() {
     return {
       snipcartKey: process.env.SNIPCART,
-      icons: ['mdi-facebook', 'mdi-twitter', 'mdi-linkedin', 'mdi-instagram'],
-      links: ['Home', 'About Us', 'Team', 'Services', 'Blog', 'Contact Us'],
+      icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+      links: ["Home", "About Us", "Team", "Services", "Blog", "Contact Us"],
+      fab: false,
     }
+  },
+  methods: {
+    scroll() {
+      if (typeof window === "undefined") return
+      window.scrollTo(0, 0)
+    },
+    onScroll(e) {
+      if (typeof window === "undefined") return
+      const top = window.pageYOffset || e.target.scrollTop || 0
+      this.fab = top > 20
+    },
+    //   if (typeof window === "undefined") return
+    //   const top = window.pageYOffset || e.target.scrollTop || 0
+    //   this.fab = top > 20
+    // },
   },
 }
 </script>
