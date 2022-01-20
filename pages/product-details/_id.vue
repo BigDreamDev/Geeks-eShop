@@ -37,8 +37,8 @@
         {{ product.data.attributes.longDescription }}
       </h2>
       <div class="mt-4 hidden sm:block">
-        <hr class="text-gray-300 mt-4" />
-        <span class="text-2xl"
+        <hr class="text-gray-300 my-4" />
+        <span class="text-2xl pt-2"
           >Price: ${{ product.data.attributes.price }}</span
         >
         <del class="display-none text-sm"
@@ -58,7 +58,6 @@
         >
           Add to cart
         </button>
-        <hr class="text-gray-300 mt-4" />
       </div>
       <hr class="text-gray-300 mt-4" />
     </div>
@@ -77,6 +76,7 @@
         <span class="capitalize font-bold">{{ spec }}</span
         >: {{ val }}
       </p>
+      <v-divider></v-divider>
       <div v-if="product.data.attributes.reviews.data.length > 0">
         <h2 class="text-xl underline decoration-blue-500 font-bold mb-4">
           Reviews
@@ -92,6 +92,22 @@
           ></v-rating>
           <v-divider></v-divider>
         </p>
+        <div>
+          <h2 class="text-xl underline decoration-red-700 font-bold mb-4">
+            Add a review
+          </h2>
+          <v-textarea
+            v-model="review"
+            outlined
+            name="input-7-4"
+            label="Add a Review"
+            value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
+          ></v-textarea>
+          <span>Pick your rating</span><v-rating v-model="rating"></v-rating>
+          <v-btn class="bg-main mt-3 text-white" @click="addReview"
+            >Submit</v-btn
+          >
+        </div>
       </div>
     </div>
   </div>
@@ -99,7 +115,7 @@
 
 <script>
 import laptopQuery from "~/apollo/queries/laptop"
-import reviewsQuery from "~/apollo/queries/reviews"
+import { CreateReview } from "~/apollo/constants/graphql"
 export default {
   data() {
     return {
@@ -108,6 +124,7 @@ export default {
       desktop: null,
       reviews: null,
       rating: 4,
+      review: "",
     }
   },
   computed: {
@@ -146,20 +163,38 @@ export default {
           return 5
       }
     },
+    convertRating(rating) {
+      switch (rating) {
+        case 1:
+          return "one"
+        case 2:
+          return "two"
+        case 3:
+          return "three"
+        case 4:
+          return "four"
+        case 5:
+          return "five"
+      }
+    },
+    addReview() {
+      const review = this.review
+      const rating = this.convertRating(this.rating)
+      const id = this.$route.params.id
+      this.$apollo.mutate({
+        mutation: CreateReview,
+        variables: {
+          reviewContent: review,
+          rating,
+          id,
+        },
+      })
+    },
   },
   apollo: {
     product: {
       prefetch: true,
       query: laptopQuery,
-      variables() {
-        return {
-          id: this.$route.params.id,
-        }
-      },
-    },
-    reviews: {
-      prefetch: true,
-      query: reviewsQuery,
       variables() {
         return {
           id: this.$route.params.id,
