@@ -4,7 +4,7 @@
       <!-- <v-btn text color="black" class="hover:cursor-pointer">Laptops</v-btn> -->
       <Navbar class="mb-4"></Navbar>
     </v-app-bar>
-    <Register />
+    <component :is="currentComponent"></component>
     <v-main>
       <v-btn
         v-show="fab"
@@ -70,8 +70,14 @@
 
 <script>
 import { mapState } from "vuex"
+import Register from "~/components/Register.vue"
+import Login from "~/components/Login.vue"
 export default {
   name: "Default",
+  components: {
+    Register,
+    Login,
+  },
   data() {
     return {
       snipcartKey: process.env.SNIPCART,
@@ -81,7 +87,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["registrationModal"]),
+    ...mapState(["registrationModal", "currentComponent"]),
   },
   methods: {
     scroll() {

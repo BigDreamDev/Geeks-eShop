@@ -1,6 +1,8 @@
 export const state = () => ({
   currentTab: 0,
   registrationModal: false,
+  jwt: null,
+  currentComponent: "Register",
 })
 
 export const getters = {
@@ -15,6 +17,12 @@ export const mutations = {
   },
   triggerRegistrationModal: (state) => {
     state.registrationModal = !state.registrationModal
+  },
+  updateJWT(state, payload) {
+    state.jwt = payload
+  },
+  triggerCurrentComponent(state, payload) {
+    state.currentComponent = payload
   },
 }
 

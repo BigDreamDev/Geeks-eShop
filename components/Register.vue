@@ -8,7 +8,20 @@
     >
       <v-card class="mx-auto" max-width="500">
         <v-card-title class="text-h6 font-weight-regular justify-space-between">
-          <span>{{ currentTitle }}</span>
+          <span
+            class="mr-4 hover:cursor-pointer"
+            :class="currentComponent === 'Register' ? 'text-main' : ''"
+            @click="triggerRegistration('Register')"
+            >{{ currentTitle }}</span
+          >
+          <span v-if="step === 1">|</span>
+          <span
+            v-if="step === 1"
+            class="ml-4 hover:cursor-pointer"
+            :class="currentComponent === 'Login' ? 'text-main' : ''"
+            @click="triggerRegistration('Login')"
+            >Log In</span
+          >
           <v-avatar
             class="subheading ml-auto bg-main white--text"
             size="24"
@@ -61,7 +74,11 @@
         <v-card-actions>
           <v-btn :disabled="step === 1" text @click="step--"> Back </v-btn>
           <v-spacer></v-spacer>
-          <v-btn class="bg-main text-white" depressed @click="step++, submit()">
+          <v-btn
+            class="bg-main text-white"
+            depressed
+            @click.prevent="step++, submit()"
+          >
             <span class="text-white">{{ buttonTitle }}</span>
           </v-btn>
         </v-card-actions>
@@ -72,12 +89,14 @@
 
 <script>
 import { mapState } from "vuex"
+import registerUser from "~/apollo/mutations/registerUser"
 export default {
   data: () => ({
     step: 1,
     dialog: false,
     email: "",
     password: "",
+    register: "",
   }),
   computed: {
     currentTitle() {
@@ -90,7 +109,7 @@ export default {
           return "Account created"
       }
     },
-    ...mapState(["registrationModal"]),
+    ...mapState(["registrationModal", "currentComponent"]),
     buttonTitle() {
       if (this.step === 3) {
         return "Finish"
@@ -104,18 +123,26 @@ export default {
       this.$store.commit("triggerRegistrationModal")
     },
     submit() {
+      const { email: user, password } = this.$data
       if (this.step === 3) {
-        this.$axios
-          .$post("http://localhost:1337/api/auth/local/register", {
-            username: this.email,
-            email: this.email,
-            password: this.password,
+        this.$apollo
+          .mutate({
+            mutation: registerUser,
+            variables: {
+              username: user,
+              email: user,
+              password,
+            },
           })
-          .then((res) => console.log(res))
-        console.log(this.email, this.password)
+          .then((res) => {
+            this.$store.commit("updateJWT", res.data.register.jwt)
+          })
       } else if (this.step === 4) {
         this.closeModal()
       }
+    },
+    triggerRegistration(component) {
+      this.$store.commit("triggerCurrentComponent", component)
     },
   },
 }
