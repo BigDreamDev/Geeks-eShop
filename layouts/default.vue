@@ -4,6 +4,7 @@
       <!-- <v-btn text color="black" class="hover:cursor-pointer">Laptops</v-btn> -->
       <Navbar class="mb-4"></Navbar>
     </v-app-bar>
+    <Register />
     <v-main>
       <v-btn
         v-show="fab"
@@ -68,6 +69,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex"
 export default {
   name: "Default",
   data() {
@@ -77,6 +79,9 @@ export default {
       links: ["Home", "About Us", "Team", "Services", "Blog", "Contact Us"],
       fab: false,
     }
+  },
+  computed: {
+    ...mapState(["registrationModal"]),
   },
   methods: {
     scroll() {
@@ -88,10 +93,6 @@ export default {
       const top = window.pageYOffset || e.target.scrollTop || 0
       this.fab = top > 20
     },
-    //   if (typeof window === "undefined") return
-    //   const top = window.pageYOffset || e.target.scrollTop || 0
-    //   this.fab = top > 20
-    // },
   },
 }
 </script>

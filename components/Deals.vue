@@ -17,7 +17,7 @@
 export default {
   data() {
     return {
-      tabs: ['Laptops', 'Desktops', 'Mobile', 'Monitors'],
+      tabs: ["Laptops", "Desktops", "Mobile", "Monitors"],
     }
   },
   computed: {
@@ -26,7 +26,7 @@ export default {
         return this.$store.getters.currentTab
       },
       set(newValue) {
-        return this.$store.commit('changeCurrentTab', newValue)
+        return this.$store.commit("changeCurrentTab", newValue)
       },
     },
   },

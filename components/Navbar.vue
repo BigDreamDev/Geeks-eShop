@@ -101,6 +101,12 @@
         </v-list-item>
       </v-list>
     </v-menu>
+    <v-btn
+      class="mt-1 ml-auto text-black"
+      text
+      @click="triggerRegistrationModal"
+      >Register/Login</v-btn
+    >
   </div>
 </template>
 <script>
@@ -127,12 +133,10 @@ export default {
       ],
     }
   },
-
-  created() {
-    console.log(this.laptops, "created")
-  },
-  mounted() {
-    console.log(this.laptops, "mounted")
+  methods: {
+    triggerRegistrationModal() {
+      this.$store.commit("triggerRegistrationModal")
+    },
   },
   apollo: {
     laptops: {

@@ -1,5 +1,6 @@
 export const state = () => ({
   currentTab: 0,
+  registrationModal: false,
 })
 
 export const getters = {
@@ -11,6 +12,9 @@ export const getters = {
 export const mutations = {
   changeCurrentTab: (state, payload) => {
     state.currentTab = payload
+  },
+  triggerRegistrationModal: (state) => {
+    state.registrationModal = !state.registrationModal
   },
 }
 

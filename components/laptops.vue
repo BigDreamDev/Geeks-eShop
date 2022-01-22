@@ -24,10 +24,11 @@
           <div class="flex flex-row pl-3">
             <span>Rating:</span>
             <v-rating
-              v-model="rating"
+              :value="rating"
               background-color="white"
               color="yellow accent-4"
               dense
+              readonly
               half-increments
               hover
               size="18"

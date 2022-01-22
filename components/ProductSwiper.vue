@@ -5,7 +5,12 @@
       :key="product.id"
       class="d-flex justify-center"
     >
-      <product-card :product="product"></product-card>
+      <keep-alive>
+        <product-card
+          transition="fade-transition"
+          :product="product"
+        ></product-card>
+      </keep-alive>
     </swiper-slide>
 
     <div slot="button-prev" class="swiper-button-prev"></div>
