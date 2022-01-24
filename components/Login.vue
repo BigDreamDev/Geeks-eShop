@@ -65,6 +65,7 @@ export default {
       this.$store.commit("triggerRegistrationModal")
     },
     login() {
+      console.log(this, "comp")
       this.$apollo
         .mutate({
           mutation: loginUser,
@@ -76,10 +77,11 @@ export default {
         .then((res) => {
           this.$store.commit("updateJWT", res.data.login.jwt)
         })
+      this.$store.commit("triggerRegistrationModal")
+      this.$store.dispatch("updateUserInfo")
     },
     triggerRegistration(component) {
       this.$store.commit("triggerCurrentComponent", component)
-      this.$store.commit("triggerRegistrationModal")
     },
   },
 }

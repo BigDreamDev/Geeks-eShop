@@ -184,6 +184,8 @@ export default {
     },
     addReview() {
       const review = this.review
+      const token = this.$store.state.jwt
+      console.log(token)
       const rating = this.convertRating(this.rating)
       const id = this.$route.params.id
       this.$apollo.mutate({
@@ -192,6 +194,11 @@ export default {
           reviewContent: review,
           rating,
           id,
+        },
+        context: {
+          headers: {
+            Authorization: `Bearer ${token}`, // ⭕ Fetch without header
+          },
         },
       })
     },
