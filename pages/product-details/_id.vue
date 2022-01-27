@@ -65,6 +65,7 @@
       <h3 class="text-xl font-bold my-4 underline decoration-purple-500">
         About this item
       </h3>
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <p class="whitespace-pre-wrap" v-html="product.data.attributes.info"></p>
     </div>
     <div class="order-4 px-6 sm:col-span-1 my-4 col-span-2">
@@ -82,6 +83,7 @@
           <h2 class="text-xl underline decoration-blue-500 font-bold mb-4">
             Reviews
           </h2>
+          <!-- eslint-disable vue/no-template-shadow -->
           <p
             v-for="(review, i) in product.data.attributes.reviews.data"
             :key="i"
@@ -182,13 +184,12 @@ export default {
           return "five"
       }
     },
-    addReview() {
+    async addReview() {
       const review = this.review
       const token = this.$store.state.jwt
-      console.log(token)
       const rating = this.convertRating(this.rating)
       const id = this.$route.params.id
-      this.$apollo.mutate({
+      await this.$apollo.mutate({
         mutation: CreateReview,
         variables: {
           reviewContent: review,
@@ -197,10 +198,12 @@ export default {
         },
         context: {
           headers: {
-            Authorization: `Bearer ${token}`, // ⭕ Fetch without header
+            Authorization: `Bearer ${token}`,
           },
         },
       })
+      this.$apollo.queries.product.refetch()
+      this.review = ""
     },
   },
   apollo: {
