@@ -51,7 +51,6 @@
 
 <script>
 import { mapState } from "vuex"
-import loginUser from "~/apollo/mutations/loginUser"
 export default {
   data: () => ({
     email: "",
@@ -64,21 +63,13 @@ export default {
     closeModal() {
       this.$store.commit("triggerRegistrationModal")
     },
-    login() {
-      console.log(this, "comp")
-      this.$apollo
-        .mutate({
-          mutation: loginUser,
-          variables: {
-            identifier: this.email,
-            password: this.password,
-          },
-        })
-        .then((res) => {
-          this.$store.commit("updateJWT", res.data.login.jwt)
-        })
-      this.$store.commit("triggerRegistrationModal")
-      this.$store.dispatch("updateUserInfo")
+    async login() {
+      const payload = {
+        email: this.email,
+        password: this.password,
+      }
+      await this.$store.dispatch("login", payload)
+      await this.$store.dispatch("updateUserInfo")
     },
     triggerRegistration(component) {
       this.$store.commit("triggerCurrentComponent", component)

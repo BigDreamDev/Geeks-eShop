@@ -71,14 +71,18 @@
         </v-list-item>
       </v-list>
     </v-menu>
-    <v-btn text class="mt-1 ml-auto text-black">
-      Hi there{{ user.username }}</v-btn
+    <v-btn v-if="user != null" text class="mt-1 ml-auto text-black">
+      Hi there {{ user.username }}</v-btn
     >
     <v-btn
+      v-if="!user"
       class="mt-1 ml-auto text-black"
       text
       @click="triggerRegistrationModal"
       >Register/Login</v-btn
+    >
+    <v-btn v-else class="mt-1 ml-auto text-black" text @click="signout"
+      >Sign out</v-btn
     >
   </div>
 </template>
@@ -94,13 +98,16 @@ export default {
       desktops: [],
     }
   },
+  computed: {
+    ...mapState(["user"]),
+  },
   methods: {
     triggerRegistrationModal() {
       this.$store.commit("triggerRegistrationModal")
     },
-  },
-  computed: {
-    ...mapState(["user"]),
+    signout() {
+      this.$store.dispatch("signout")
+    },
   },
   apollo: {
     laptops: {

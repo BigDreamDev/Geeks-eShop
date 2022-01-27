@@ -1,4 +1,5 @@
 import userInfoQuery from "~/apollo/queries/userInfo.gql"
+import loginUser from "~/apollo/mutations/loginUser"
 
 export const state = () => ({
   currentTab: 0,
@@ -7,11 +8,16 @@ export const state = () => ({
   isLoggedIn: false,
   user: null,
   currentComponent: "Register",
+  snackbarText: null,
+  snackbarVisible: false,
 })
 
 export const getters = {
   currentTab: (state) => {
     return state.currentTab
+  },
+  snackbarVisible: (state) => {
+    return state.snackbarVisible
   },
 }
 
@@ -34,11 +40,24 @@ export const mutations = {
   triggerLoggedIn(state) {
     state.isLoggedIn = !state.isLoggedIn
   },
+  loggedin(state) {
+    state.snackbarVisible = true
+    state.snackbarText = "Logged In Successfully"
+  },
+  signout(state) {
+    state.user = null
+    state.jwt = null
+    state.snackbarVisible = true
+    state.snackbarText = "Signed Out Successfully"
+  },
+  hideSnackbar(state) {
+    state.snackbarVisible = false
+    state.snackbarText = ""
+  },
 }
 
 export const actions = {
   updateUserInfo({ commit, state }) {
-    console.log(this)
     const apollo = this.app.apolloProvider.defaultClient
     apollo
       .query({
@@ -51,5 +70,33 @@ export const actions = {
       })
       .then((res) => commit("setUser", res.data.userInfo))
       .then(commit("triggerLoggedIn"))
+  },
+  login({ commit }, payload) {
+    const apollo = this.app.apolloProvider.defaultClient
+    apollo
+      .mutate({
+        mutation: loginUser,
+        variables: {
+          identifier: payload.email,
+          password: payload.password,
+        },
+      })
+      .then((res) => {
+        commit("updateJWT", res.data.login.jwt)
+      })
+    commit("loggedin")
+    commit("triggerRegistrationModal")
+
+    const clearState = setTimeout(() => {
+      commit("hideSnackbar")
+    }, 2000)
+    clearTimeout(clearState)
+  },
+  signout({ commit }) {
+    commit("signout")
+    const clearState = setTimeout(() => {
+      commit("hideSnackbar")
+    }, 2000)
+    clearTimeout(clearState)
   },
 }

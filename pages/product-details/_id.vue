@@ -142,7 +142,7 @@ export default {
         }))
         .map((x, index) =>
           Object.entries(x).map(([key, value]) => ({
-            [`data-item-custom${index + 1}-${key.toString().toLowerCase()}`]:
+            [`data-item-custom${index + 1}-${key?.toString().toLowerCase()}`]:
               value,
           }))
         )

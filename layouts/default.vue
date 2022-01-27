@@ -17,6 +17,11 @@
       >
         <v-icon class="text-main" size="24px"> mdi-arrow-up </v-icon>
       </v-btn>
+      <v-snackbar v-model="snackbarVisible">
+        <p class="text-red-600 font-bold text-xl my-auto text-center">
+          {{ snackbarText }}
+        </p>
+      </v-snackbar>
       <nuxt />
       <div v-once id="snipcart" hidden :data-api-key="snipcartKey"></div>
     </v-main>
@@ -69,7 +74,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex"
+import { mapState, mapGetters } from "vuex"
 import Register from "~/components/Register.vue"
 import Login from "~/components/Login.vue"
 export default {
@@ -84,10 +89,20 @@ export default {
       icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
       links: ["Home", "About Us", "Team", "Services", "Blog", "Contact Us"],
       fab: false,
+      snackbar: false,
     }
   },
   computed: {
-    ...mapState(["registrationModal", "currentComponent"]),
+    ...mapState(["registrationModal", "currentComponent", "snackbarText"]),
+    ...mapGetters(["snackbarVisible"]),
+    snackbarVisible: {
+      get() {
+        return this.$store.getters.snackbarVisible
+      },
+      set() {
+        return this.$store.commit("hideSnackbar")
+      },
+    },
   },
   methods: {
     scroll() {
