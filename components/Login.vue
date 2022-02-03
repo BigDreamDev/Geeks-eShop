@@ -69,7 +69,7 @@ export default {
         password: this.password,
       }
       await this.$store.dispatch("login", payload)
-      await this.$store.dispatch("updateUserInfo")
+      this.$store.dispatch("updateUserInfo")
     },
     triggerRegistration(component) {
       this.$store.commit("triggerCurrentComponent", component)

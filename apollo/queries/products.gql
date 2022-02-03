@@ -1,0 +1,28 @@
+query Products {
+  products: laptops {
+    data {
+      id
+      attributes {
+        model
+        Date
+        description
+        inStock
+        price
+        type
+        specifications
+        custom_field {
+          title
+          required
+          options
+        }
+        picture {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}

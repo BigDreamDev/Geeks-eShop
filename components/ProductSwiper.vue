@@ -1,16 +1,14 @@
 <template>
-  <swiper v-if="currentProduct.data" class="swiper" :options="swiperOption">
+  <swiper v-if="products" class="swiper" :options="swiperOption">
     <swiper-slide
-      v-for="product in currentProduct.data.attributes.products.data"
+      v-for="product in products"
       :key="product.id"
       class="d-flex justify-center"
     >
-      <keep-alive>
-        <product-card
-          transition="fade-transition"
-          :product="product"
-        ></product-card>
-      </keep-alive>
+      <product-card
+        transition="fade-transition"
+        :product="product"
+      ></product-card>
     </swiper-slide>
 
     <div slot="button-prev" class="swiper-button-prev"></div>
@@ -21,23 +19,25 @@
 <script>
 import { Swiper } from "vue-awesome-swiper"
 import "swiper/css/swiper.css"
-import laptopsQuery from "~/apollo/queries/laptops"
-import desktopsQuery from "~/apollo/queries/desktops"
 export default {
   components: {
     Swiper,
   },
+  props: {
+    products: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
-      laptops: [],
-      desktops: [],
+      ProductCard: "swiper-slide",
       swiperOption: {
         slidesPerView: 3,
         spaceBetween: 10,
         slidesPerGroup: 1,
         loop: false,
         loopFillGroupWithBlank: false,
-
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -62,21 +62,9 @@ export default {
   computed: {
     currentProduct() {
       const product = this.$store.getters.currentTab
-      if (product === 0) return this.laptops
-      else if (product === 1) return this.desktops
-      else {
-        return this.laptops
-      }
-    },
-  },
-  apollo: {
-    laptops: {
-      prefetch: true,
-      query: laptopsQuery,
-    },
-    desktops: {
-      prefetch: false,
-      query: desktopsQuery,
+      const filter = product === 0 ? "laptop" : "desktop"
+      const products = this.products
+      return products.filter((product) => product.attributes.type === filter)
     },
   },
 }

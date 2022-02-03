@@ -22,7 +22,9 @@
         </v-sheet>
       </v-carousel-item>
     </v-carousel>
-    <laptops></laptops>
+    <!-- <laptops></laptops> -->
+    <FeaturedProducts></FeaturedProducts>
+
     <div>
       <v-parallax height="600" src="/offer.webp">
         <v-row class="items-center" justify="center">
@@ -33,11 +35,7 @@
         </v-row>
       </v-parallax>
     </div>
-    <FeaturedProducts></FeaturedProducts>
     <Deals></Deals>
-    <client-only>
-      <ProductSwiper></ProductSwiper>
-    </client-only>
   </div>
 </template>
 
@@ -62,7 +60,7 @@ export default {
   },
   computed: {
     carouselHeight() {
-      if (process.client) {
+      if (process.client && typeof window !== "undefined") {
         return window.innerHeight - 64
       } else {
         return 650

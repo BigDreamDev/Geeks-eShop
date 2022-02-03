@@ -7,7 +7,11 @@
       <Cart />
       <span class="snipcart-total-price ml-3 font-semibold text-sm"></span>
     </button>
-    <v-menu open-on-hover offset-y>
+    <v-menu
+      v-if="laptops.data.attributes.products.data.length > 0"
+      open-on-hover
+      offset-y
+    >
       <template #activator="{ on, attrs }">
         <v-btn
           text
@@ -39,7 +43,12 @@
         </v-list-item>
       </v-list>
     </v-menu>
-    <v-menu open-on-hover offset-y>
+    <!-- <v-btn v-else class="mt-2" text>Laptops</v-btn> -->
+    <v-menu
+      v-if="desktops.data.attributes.products.data.length > 0"
+      open-on-hover
+      offset-y
+    >
       <template #activator="{ on, attrs }">
         <v-btn
           text
@@ -71,12 +80,13 @@
         </v-list-item>
       </v-list>
     </v-menu>
+    <!-- <v-btn v-else class="mt-1" text>Desktops</v-btn> -->
     <v-btn v-if="user != null" text class="mt-1 ml-auto text-black">
       Hi there {{ user.username }}</v-btn
     >
     <v-btn
       v-if="!user"
-      class="mt-1 ml-auto text-black"
+      class="mt-2 ml-auto text-black"
       text
       @click="triggerRegistrationModal"
       >Register/Login</v-btn

@@ -57,33 +57,30 @@ export const mutations = {
 }
 
 export const actions = {
-  updateUserInfo({ commit, state }) {
+  async updateUserInfo({ commit, state }) {
     const apollo = this.app.apolloProvider.defaultClient
-    apollo
-      .query({
-        query: userInfoQuery,
-        context: {
-          headers: {
-            Authorization: `Bearer ${state.jwt}`,
-          },
+    const res = await apollo.query({
+      query: userInfoQuery,
+      context: {
+        headers: {
+          Authorization: `Bearer ${state.jwt}`,
         },
-      })
-      .then((res) => commit("setUser", res.data.userInfo))
-      .then(commit("triggerLoggedIn"))
+      },
+    })
+
+    commit("setUser", res.data.userInfo)
+    commit("triggerLoggedIn")
   },
-  login({ commit }, payload) {
+  async login({ commit }, payload) {
     const apollo = this.app.apolloProvider.defaultClient
-    apollo
-      .mutate({
-        mutation: loginUser,
-        variables: {
-          identifier: payload.email,
-          password: payload.password,
-        },
-      })
-      .then((res) => {
-        commit("updateJWT", res.data.login.jwt)
-      })
+    const res = await apollo.mutate({
+      mutation: loginUser,
+      variables: {
+        identifier: payload.email,
+        password: payload.password,
+      },
+    })
+    commit("updateJWT", res.data.login.jwt)
     commit("loggedin")
     commit("triggerRegistrationModal")
 
