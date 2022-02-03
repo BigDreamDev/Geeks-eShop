@@ -54,6 +54,10 @@ export const mutations = {
     state.snackbarVisible = false
     state.snackbarText = ""
   },
+  updateSnackbar(state, payload) {
+    state.snackbarText = payload
+    state.snackbarVisible = true
+  },
 }
 
 export const actions = {
@@ -71,6 +75,7 @@ export const actions = {
     commit("setUser", res.data.userInfo)
     commit("triggerLoggedIn")
   },
+
   async login({ commit }, payload) {
     const apollo = this.app.apolloProvider.defaultClient
     const res = await apollo.mutate({
@@ -89,8 +94,17 @@ export const actions = {
     }, 2000)
     clearTimeout(clearState)
   },
+
   signout({ commit }) {
     commit("signout")
+    const clearState = setTimeout(() => {
+      commit("hideSnackbar")
+    }, 2000)
+    clearTimeout(clearState)
+  },
+
+  showNotification({ commit }, payload) {
+    commit("updateSnackbar", payload)
     const clearState = setTimeout(() => {
       commit("hideSnackbar")
     }, 2000)

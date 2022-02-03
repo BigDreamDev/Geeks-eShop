@@ -1,5 +1,5 @@
 <template>
-  <div v-if="product" class="grid grid-cols-2 mt-4 mb-8">
+  <div v-if="product" class="grid grid-cols-2 mt-4 mb-8 min-h-screen">
     <div class="px-8 col-span-2 sm:col-span-1 order-2 sm:order-1">
       <img
         :src="
@@ -118,12 +118,15 @@
       </div>
     </div>
   </div>
+  <Spinner v-else></Spinner>
 </template>
 
 <script>
 import laptopQuery from "~/apollo/queries/laptop"
 import { CreateReview } from "~/apollo/constants/graphql"
+import Spinner from "~/components/Spinner.vue"
 export default {
+  components: { Spinner },
   data() {
     return {
       product: null,
@@ -189,21 +192,26 @@ export default {
       const token = this.$store.state.jwt
       const rating = this.convertRating(this.rating)
       const id = this.$route.params.id
-      await this.$apollo.mutate({
-        mutation: CreateReview,
-        variables: {
-          reviewContent: review,
-          rating,
-          id,
-        },
-        context: {
-          headers: {
-            Authorization: `Bearer ${token}`,
+      try {
+        await this.$apollo.mutate({
+          mutation: CreateReview,
+          variables: {
+            reviewContent: review,
+            rating,
+            id,
           },
-        },
-      })
-      this.$apollo.queries.product.refetch()
-      this.review = ""
+          context: {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        })
+        this.$apollo.queries.product.refetch()
+        this.review = ""
+      } catch (error) {
+        this.$store.dispatch("showNotification", "Please Login first")
+        console.log(error)
+      }
     },
   },
   apollo: {
