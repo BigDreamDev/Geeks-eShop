@@ -31,6 +31,12 @@
       "relation": "manyToOne",
       "target": "api::laptop.laptop",
       "inversedBy": "reviews"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "reviews"
     }
   }
 }

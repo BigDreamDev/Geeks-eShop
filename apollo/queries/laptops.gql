@@ -13,15 +13,6 @@ query Laptops {
               longDescription
               inStock
               price
-              reviews {
-                data {
-                  id
-                  attributes {
-                    content
-                    rating
-                  }
-                }
-              }
               type
               picture {
                 data {

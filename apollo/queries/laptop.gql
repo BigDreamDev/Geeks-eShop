@@ -16,15 +16,6 @@ query Laptop($id: ID!) {
         }
         description
         info
-        reviews {
-          data {
-            id
-            attributes {
-              content
-              rating
-            }
-          }
-        }
         picture {
           data {
             attributes {

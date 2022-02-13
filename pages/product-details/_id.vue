@@ -79,26 +79,32 @@
       </p>
       <v-divider></v-divider>
       <div>
-        <div v-if="product.data.attributes.reviews.data.length > 0">
-          <h2 class="text-xl underline decoration-blue-500 font-bold mb-4">
+        <div v-if="reviews.data && reviews.data.length">
+          <h2 class="text-xl underline decoration-main font-bold mt-4 mb-3">
             Reviews
           </h2>
-          <!-- eslint-disable vue/no-template-shadow -->
-          <p
-            v-for="(review, i) in product.data.attributes.reviews.data"
-            :key="i"
-          >
-            <span class="capitalize font-bold">{{
-              review.attributes.content
-            }}</span>
+          <div v-for="(rev, i) in reviews.data" :key="i" class="relative">
+            <v-btn
+              v-if="rev.attributes.user.data.id === userID"
+              text
+              class="absolute right-0 top-2"
+              @click="deleteReview(rev.id)"
+            >
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+            <p class="font-bold pt-3">
+              {{ rev.attributes.user.data.attributes.username }}
+            </p>
+            <span class="capitalize">"{{ rev.attributes.content }}"</span>
             <v-rating
-              :value="calcRating(review.attributes.rating)"
+              :value="calcRating(rev.attributes.rating)"
               small
               readonly
             ></v-rating>
             <v-divider></v-divider>
-          </p>
+          </div>
         </div>
+        <p v-else class="pt-2">No Reviews have been submited Yet</p>
         <div>
           <h2 class="text-xl mt-4 underline decoration-red-700 font-bold mb-4">
             Add a review
@@ -123,6 +129,8 @@
 
 <script>
 import laptopQuery from "~/apollo/queries/laptop"
+import reviewsQuery from "~/apollo/queries/getReviews"
+import deleteReview from "~/apollo/mutations/deleteReview"
 import { CreateReview } from "~/apollo/constants/graphql"
 import Spinner from "~/components/Spinner.vue"
 export default {
@@ -132,7 +140,7 @@ export default {
       product: null,
       laptop: null,
       desktop: null,
-      reviews: null,
+      reviews: [],
       rating: 4,
       review: "",
     }
@@ -156,6 +164,9 @@ export default {
     },
     type() {
       return this.$route.query.type
+    },
+    userID() {
+      return this.$store.state.user.id
     },
   },
   methods: {
@@ -192,6 +203,7 @@ export default {
       const token = this.$store.state.jwt
       const rating = this.convertRating(this.rating)
       const id = this.$route.params.id
+      const userID = this.$store.state.user.id
       try {
         await this.$apollo.mutate({
           mutation: CreateReview,
@@ -199,6 +211,7 @@ export default {
             reviewContent: review,
             rating,
             id,
+            userID,
           },
           context: {
             headers: {
@@ -206,12 +219,22 @@ export default {
             },
           },
         })
-        this.$apollo.queries.product.refetch()
+
+        this.$apollo.queries.reviews.refetch()
         this.review = ""
       } catch (error) {
         this.$store.dispatch("showNotification", "Please Login first")
         console.log(error)
       }
+    },
+    async deleteReview(id) {
+      await this.$apollo.mutate({
+        mutation: deleteReview,
+        variables: {
+          id,
+        },
+      })
+      this.$apollo.queries.reviews.refetch()
     },
   },
   apollo: {
@@ -221,6 +244,19 @@ export default {
       variables() {
         return {
           id: this.$route.params.id,
+        }
+      },
+    },
+    reviews: {
+      prefetch: false,
+      query: reviewsQuery,
+      variables() {
+        return {
+          laptopID: {
+            id: {
+              eq: this.$route.params.id,
+            },
+          },
         }
       },
     },

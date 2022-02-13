@@ -1,0 +1,19 @@
+query reviews($laptopID: LaptopFiltersInput!) {
+  reviews(filters: { laptop: $laptopID }) {
+    data {
+      id
+      attributes {
+        content
+        user {
+          data {
+            id
+            attributes {
+              username
+            }
+          }
+        }
+        rating
+      }
+    }
+  }
+}
