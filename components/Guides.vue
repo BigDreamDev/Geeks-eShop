@@ -1,0 +1,102 @@
+<template>
+  <div>
+    <h2 class="text-center font-bold text-black text-4xl mb-4">Guides</h2>
+    <div
+      class="mb-8 grid grid-cols-4 gap-1 grid-rows-[200px_minmax(200px,_1fr)_100px]"
+    >
+      <!-- <div class="mx-2"> -->
+      <div sm="6" class="col-span-2 row-span-2 relative p-0 overflow-hidden">
+        <div
+          class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/pc.jpg')] guides-bg"
+        ></div>
+        <div
+          class="mt-auto absolute bottom-0 left-0 py-3 px-4 w-full bg-gray-900 z-10 text-white bg-opacity-70"
+        >
+          <h2 class="font-bold text-lg">
+            How to make your PC stand the test of time
+          </h2>
+          <p class="mb-0 text-base">
+            A few tips and tricks to keep your system running smoothly for years
+            to come.
+          </p>
+        </div>
+      </div>
+      <div class="relative col-span-1 row-span-1 p-0 overflow-hidden" sm="3">
+        <div
+          class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/fan.jpg')] guides-bg"
+        ></div>
+        <div
+          class="mt-auto absolute bottom-0 left-0 py-3 px-4 max-h-[50%] w-full bg-gray-900 z-10 text-white bg-opacity-70"
+        >
+          <h2 class="font-bold text-lg truncate overflow-hidden text-ellipsis">
+            How to quiet a noisy laptop fan
+          </h2>
+          <p class="mb-0 text-base truncate overflow-hidden text-ellipsis">
+            It's time you enjoyed the sound of silence again
+          </p>
+        </div>
+      </div>
+      <div class="relative col-span-1 row-span-1 p-0 overflow-hidden" sm="3">
+        <div
+          class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/gpu.jpg')] guides-bg"
+        ></div>
+        <div
+          class="mt-auto absolute bottom-0 left-0 py-3 px-4 max-h-[50%] w-full bg-gray-900 z-10 text-white bg-opacity-70"
+        >
+          <h2
+            class="font-bold text-base truncate overflow-hidden text-ellipsis"
+          >
+            NEW ROG STRIX AND TUF GAMING GEFORCE RTX 3080 GPUS GET AN EXTRA
+            HELPING OF VRAM
+          </h2>
+          <p class="mb-0 text-base truncate overflow-hidden text-ellipsis">
+            The new ROG Strix GeForce RTX 3080 12GB and TUF Gaming GeForce RTX
+            3080 12GB GPUs debut with an additional 2GB more VRAM than their
+            predecessors.
+          </p>
+        </div>
+      </div>
+      <div class="relative col-span-1 row-span-1 p-0 overflow-hidden" sm="3">
+        <div
+          class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/league.jpg')] guides-bg"
+        ></div>
+        <div
+          class="mt-auto absolute bottom-0 left-0 py-3 px-4 max-h-[50%] w-full bg-gray-900 z-10 text-white bg-opacity-70"
+        >
+          <h2 class="font-bold text-lg truncate overflow-hidden text-ellipsis">
+            Rocket League Sidewipe puts high-horsepower soccer in your pocket,
+            and nails it
+          </h2>
+          <p class="mb-0 text-base truncate overflow-hidden text-ellipsis">
+            Rocket League's new mobile game perfectly encapsulates what makes
+            the original so great, but in a side-scrolling format.
+          </p>
+        </div>
+      </div>
+      <div class="relative col-span-1 row-span-1 p-0 overflow-hidden" sm="3">
+        <div
+          class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/ces.jpg')] guides-bg"
+        ></div>
+        <div
+          class="mt-auto absolute bottom-0 left-0 py-3 px-4 max-h-[50%] w-full bg-gray-900 z-10 text-white bg-opacity-70"
+        >
+          <h2 class="font-bold text-lg truncate overflow-hidden text-ellipsis">
+            ROG announces a cutting-edge aresenal of gaming gears at CES 2022
+          </h2>
+          <p class="mb-0 text-base truncate overflow-hidden text-ellipsis">
+            2022 is poised to be an awesome year for PC gaming. from brand-new
+            laptops, high-refresh rate displays, feature-filled keyboards, and
+            DIY PC components, here's all the new gear ROG announced at CES.
+          </p>
+        </div>
+      </div>
+      <!-- </div> -->
+    </div>
+  </div>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style scoped></style>

@@ -6,24 +6,26 @@
     </v-app-bar>
     <component :is="currentComponent"></component>
     <v-main>
-      <v-btn
-        v-show="fab"
-        v-scroll="onScroll"
-        fab
-        fixed
-        bottom
-        right
-        @click="scroll"
-      >
-        <v-icon class="text-main" size="24px"> mdi-arrow-up </v-icon>
-      </v-btn>
-      <v-snackbar v-model="snackbarVisible">
-        <p class="text-red-600 font-bold text-xl my-auto text-center">
-          {{ snackbarText }}
-        </p>
-      </v-snackbar>
-      <nuxt />
-      <div v-once id="snipcart" hidden :data-api-key="snipcartKey"></div>
+      <v-container class="p-0" fluid>
+        <v-btn
+          v-show="fab"
+          v-scroll="onScroll"
+          fab
+          fixed
+          bottom
+          right
+          @click="scroll"
+        >
+          <v-icon class="text-main" size="24px"> mdi-arrow-up </v-icon>
+        </v-btn>
+        <v-snackbar v-model="snackbarVisible">
+          <p class="text-red-600 font-bold text-xl my-auto text-center">
+            {{ snackbarText }}
+          </p>
+        </v-snackbar>
+        <nuxt />
+        <div v-once id="snipcart" hidden :data-api-key="snipcartKey"></div>
+      </v-container>
     </v-main>
     <v-footer dark padless>
       <v-row justify="center" no-gutters>

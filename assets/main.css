@@ -3,6 +3,7 @@ body {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 @tailwind base;
@@ -42,4 +43,8 @@ body {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+.guides-bg {
+  @apply bg-cover bg-no-repeat transition-all duration-1000 bg-center;
 }

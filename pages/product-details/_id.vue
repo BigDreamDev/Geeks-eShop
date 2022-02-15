@@ -79,32 +79,44 @@
       </p>
       <v-divider></v-divider>
       <div>
-        <div v-if="reviews.data && reviews.data.length">
-          <h2 class="text-xl underline decoration-main font-bold mt-4 mb-3">
-            Reviews
-          </h2>
+        <h2 class="text-xl underline decoration-main font-bold mt-4 mb-3">
+          Reviews
+        </h2>
+        <v-alert
+          v-if="error"
+          border="right"
+          colored-border
+          type="error"
+          elevation="2"
+        >
+          Something went wrong!.
+        </v-alert>
+        <Spinner v-if="$apollo.queries.reviews.loading"></Spinner>
+        <div v-else>
           <div v-for="(rev, i) in reviews.data" :key="i" class="relative">
-            <v-btn
-              v-if="rev.attributes.user.data.id === userID"
-              text
-              class="absolute right-0 top-2"
-              @click="deleteReview(rev.id)"
-            >
-              <v-icon>mdi-close</v-icon>
-            </v-btn>
-            <p class="font-bold pt-3">
-              {{ rev.attributes.user.data.attributes.username }}
-            </p>
-            <span class="capitalize">"{{ rev.attributes.content }}"</span>
-            <v-rating
-              :value="calcRating(rev.attributes.rating)"
-              small
-              readonly
-            ></v-rating>
-            <v-divider></v-divider>
+            <div v-if="reviews.data && reviews.data.length">
+              <v-btn
+                v-if="isRegistered && isCommentOwner(rev)"
+                text
+                class="absolute right-0 top-2"
+                @click="deleteReview(rev.id)"
+              >
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+              <p class="font-bold pt-3">
+                {{ rev.attributes.user.data.attributes.username }}
+              </p>
+              <span class="capitalize">"{{ rev.attributes.content }}"</span>
+              <v-rating
+                :value="calcRating(rev.attributes.rating)"
+                small
+                readonly
+              ></v-rating>
+              <v-divider></v-divider>
+            </div>
+            <p v-else class="pt-2">No Reviews have been submited Yet</p>
           </div>
         </div>
-        <p v-else class="pt-2">No Reviews have been submited Yet</p>
         <div>
           <h2 class="text-xl mt-4 underline decoration-red-700 font-bold mb-4">
             Add a review
@@ -117,7 +129,10 @@
             value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
           ></v-textarea>
           <span>Pick your rating</span><v-rating v-model="rating"></v-rating>
-          <v-btn class="bg-main mt-3 text-white" @click="addReview"
+          <v-btn
+            :disabled="!isRegistered"
+            class="bg-main mt-3 text-white"
+            @click="addReview"
             >Submit</v-btn
           >
         </div>
@@ -143,6 +158,7 @@ export default {
       reviews: [],
       rating: 4,
       review: "",
+      error: false,
     }
   },
   computed: {
@@ -166,10 +182,16 @@ export default {
       return this.$route.query.type
     },
     userID() {
-      return this.$store.state.user.id
+      return this.$store.state.user?.id
+    },
+    isRegistered() {
+      return this.$store.state.isLoggedIn
     },
   },
   methods: {
+    isCommentOwner(rev) {
+      return rev?.attributes?.user?.data?.id === this.userID
+    },
     calcRating(rating) {
       switch (rating) {
         case "one":
@@ -223,7 +245,7 @@ export default {
         this.$apollo.queries.reviews.refetch()
         this.review = ""
       } catch (error) {
-        this.$store.dispatch("showNotification", "Please Login first")
+        this.$store.dispatch("showNotification", "Something went wrong!")
         console.log(error)
       }
     },
@@ -232,6 +254,9 @@ export default {
         mutation: deleteReview,
         variables: {
           id,
+        },
+        error() {
+          this.error = true
         },
       })
       this.$apollo.queries.reviews.refetch()

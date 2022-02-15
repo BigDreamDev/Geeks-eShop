@@ -5,22 +5,17 @@
     </nuxt-link>
     <button class="snipcart-checkout inline-flex items-center">
       <Cart />
-      <span class="snipcart-total-price ml-3 font-semibold text-sm"></span>
+      <span class="snipcart-total-price px-3 font-semibold text-sm"></span>
     </button>
+    <v-divider vertical></v-divider>
+
     <v-menu
-      v-if="laptops.data.attributes.products.data.length > 0"
+      v-if="$apollo.queries.laptops.loading === false"
       open-on-hover
       offset-y
     >
       <template #activator="{ on, attrs }">
-        <v-btn
-          text
-          dense
-          dark
-          v-bind="attrs"
-          class="mt-1 ml-4 text-black"
-          v-on="on"
-        >
+        <v-btn text dense dark v-bind="attrs" class="mt-1 text-black" v-on="on">
           Laptops
         </v-btn>
       </template>
@@ -43,24 +38,20 @@
         </v-list-item>
       </v-list>
     </v-menu>
+    <v-divider vertical></v-divider>
+
     <!-- <v-btn v-else class="mt-2" text>Laptops</v-btn> -->
     <v-menu
-      v-if="desktops.data.attributes.products.data.length > 0"
+      v-if="$apollo.queries.desktops.loading === false"
       open-on-hover
       offset-y
     >
       <template #activator="{ on, attrs }">
-        <v-btn
-          text
-          dense
-          dark
-          v-bind="attrs"
-          class="mt-1 ml-3 text-black"
-          v-on="on"
-        >
+        <v-btn text dense dark v-bind="attrs" class="mt-1 text-black" v-on="on">
           Desktops
         </v-btn>
       </template>
+      <v-divider vertical></v-divider>
 
       <v-list>
         <v-list-item
@@ -80,8 +71,9 @@
         </v-list-item>
       </v-list>
     </v-menu>
+    <v-divider vertical></v-divider>
     <!-- <v-btn v-else class="mt-1" text>Desktops</v-btn> -->
-    <v-btn v-if="user != null" text class="mt-1 ml-auto text-black">
+    <v-btn v-if="user != null" text class="mt-1 text-black">
       Hi there {{ user.username }}</v-btn
     >
     <v-btn

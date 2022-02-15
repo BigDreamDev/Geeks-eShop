@@ -37,18 +37,17 @@ export const mutations = {
   setUser(state, payload) {
     state.user = payload
   },
-  triggerLoggedIn(state) {
-    state.isLoggedIn = !state.isLoggedIn
-  },
   loggedin(state) {
     state.snackbarVisible = true
     state.snackbarText = "Logged In Successfully"
+    state.isLoggedIn = true
   },
   signout(state) {
     state.user = null
     state.jwt = null
     state.snackbarVisible = true
     state.snackbarText = "Signed Out Successfully"
+    state.isLoggedIn = false
   },
   hideSnackbar(state) {
     state.snackbarVisible = false
@@ -73,7 +72,6 @@ export const actions = {
     })
 
     commit("setUser", res.data.userInfo)
-    commit("triggerLoggedIn")
   },
 
   async login({ commit }, payload) {

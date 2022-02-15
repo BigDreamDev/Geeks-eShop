@@ -24,7 +24,6 @@
     </v-carousel>
     <!-- <laptops></laptops> -->
     <FeaturedProducts></FeaturedProducts>
-
     <div>
       <v-parallax height="600" src="/offer.webp">
         <v-row class="items-center" justify="center">
@@ -35,14 +34,16 @@
         </v-row>
       </v-parallax>
     </div>
-    <Deals></Deals>
+    <Deals />
+    <Guides />
   </div>
 </template>
 
 <script>
 import FeaturedProducts from "~/components/FeaturedProducts.vue"
+import Guides from "~/components/Guides.vue"
 export default {
-  components: { FeaturedProducts },
+  components: { FeaturedProducts, Guides },
   data() {
     return {
       model: 0,
