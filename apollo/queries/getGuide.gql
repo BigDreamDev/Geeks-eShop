@@ -1,0 +1,19 @@
+query guide($id: ID!) {
+  guide(id: $id) {
+    data {
+      id
+      attributes {
+        headline
+        p1
+        p2
+        pics {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
