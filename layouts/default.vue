@@ -14,6 +14,7 @@
           fixed
           bottom
           right
+          class="z-50"
           @click="scroll"
         >
           <v-icon class="text-main" size="24px"> mdi-arrow-up </v-icon>
