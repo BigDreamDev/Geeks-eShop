@@ -3,7 +3,7 @@
     <div class="px-8 col-span-2 sm:col-span-1 order-2 sm:order-1">
       <img
         :src="
-          'http://localhost:1337' +
+          '${process.env.NUXT_PUBLIC_API_URL}' +
           product.data.attributes.picture.data[0].attributes.url
         "
         alt=""
@@ -23,7 +23,7 @@
           :data-item-price="product.data.attributes.price"
           :data-item-url="`${$route.fullPath}`"
           :data-item-description="product.data.attributes.longDescription"
-          :data-item-image="`http://localhost:1337${product.data.attributes.picture.data[0].attributes.url}`"
+          :data-item-image="`${process.env.NUXT_PUBLIC_API_URL}${product.data.attributes.picture.data[0].attributes.url}`"
           :data-item-name="product.data.attributes.model"
           v-bind="customFields"
         >
@@ -52,7 +52,7 @@
           :data-item-price="product.data.attributes.price"
           :data-item-url="`${$route.fullPath}`"
           :data-item-description="product.data.attributes.longDescription"
-          :data-item-image="`http://localhost:1337${product.data.attributes.picture.data[0].attributes.url}`"
+          :data-item-image="`${process.env.NUXT_PUBLIC_API_URL}${product.data.attributes.picture.data[0].attributes.url}`"
           :data-item-name="product.data.attributes.model"
           v-bind="customFields"
         >

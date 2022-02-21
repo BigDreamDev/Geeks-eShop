@@ -6,13 +6,13 @@
     <p class="whitespace-pre-wrap" v-html="guide.data.attributes.p1"></p>
     <img
       class="py-11"
-      :src="`http://localhost:1337${guide.data.attributes.pics.data[1].attributes.url}`"
+      :src="`${process.env.NUXT_PUBLIC_API_URL}${guide.data.attributes.pics.data[1].attributes.url}`"
       alt=""
     />
     <p class="whitespace-pre-wrap" v-html="guide.data.attributes.p2"></p>
     <img
       class="py-11"
-      :src="`http://localhost:1337${guide.data.attributes.pics.data[0].attributes.url}`"
+      :src="`${process.env.NUXT_PUBLIC_API_URL}${guide.data.attributes.pics.data[0].attributes.url}`"
       alt=""
     />
   </div>

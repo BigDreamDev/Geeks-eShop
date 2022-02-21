@@ -76,7 +76,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: "http://localhost:1337/graphql",
+        httpEndpoint: "${process.env.NUXT_PUBLIC_API_URL}/graphql",
       },
     },
     defaultOptions: {

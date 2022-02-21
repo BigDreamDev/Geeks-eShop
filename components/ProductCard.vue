@@ -9,7 +9,7 @@
         <img
           height="250"
           class="object-contain h-64 mx-auto"
-          :src="`http://localhost:1337${product.attributes.picture.data[0].attributes.url}`"
+          :src="`${process.env.NUXT_PUBLIC_API_URL}${product.attributes.picture.data[0].attributes.url}`"
         />
 
         <v-card-title>{{ product.attributes.model }} </v-card-title>
