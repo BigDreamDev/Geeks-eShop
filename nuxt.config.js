@@ -2,7 +2,7 @@ require("dotenv").config()
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: "static",
+  target: "server",
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -31,6 +31,8 @@ export default {
   eslint: {
     cache: false,
   },
+
+  buildDir: "dist",
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [

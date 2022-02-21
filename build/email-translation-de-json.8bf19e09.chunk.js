@@ -1,0 +1,1 @@
+(self.webpackChunkmy_shop=self.webpackChunkmy_shop||[]).push([[96],{49980:s=>{"use strict";s.exports={}}}]);
