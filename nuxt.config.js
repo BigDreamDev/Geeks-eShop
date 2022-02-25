@@ -13,7 +13,25 @@ export default {
       { hid: "description", name: "description", content: "" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [
+      {
+        rel: "preload",
+        as: "image",
+        href: "/b1.webp",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/b2.webp",
+      },
+      {
+        rel: "preload",
+        as: "style",
+        href: "https://cdn.snipcart.com/themes/v3.0/default/snipcart.css",
+      },
+
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

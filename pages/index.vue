@@ -37,9 +37,17 @@
     <LazyHydrate when-visible>
       <Deals />
     </LazyHydrate>
-    <LazyHydrate when-visible>
+
+    <v-lazy
+      v-model="isActive"
+      :options="{
+        threshold: 0.2,
+      }"
+      min-height="200"
+      transition="fade-transition"
+    >
       <Guides />
-    </LazyHydrate>
+    </v-lazy>
   </div>
 </template>
 
@@ -53,6 +61,7 @@ export default {
   data() {
     return {
       model: 0,
+      isActive: false,
       items: [
         {
           id: 1,
