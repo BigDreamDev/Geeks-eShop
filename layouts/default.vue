@@ -17,7 +17,7 @@
           class="z-50"
           @click="scroll"
         >
-          <v-icon class="text-main" size="24px"> mdi-arrow-up </v-icon>
+          <v-icon class="text-main" size="24px"> {{ btnIcon }} </v-icon>
         </v-btn>
         <v-snackbar v-model="snackbarVisible">
           <p class="text-red-600 font-bold text-xl my-auto text-center">
@@ -77,6 +77,13 @@
 </template>
 
 <script>
+import {
+  mdiChevronUp,
+  mdiFacebook,
+  mdiTwitter,
+  mdiLinkedin,
+  mdiInstagram,
+} from "@mdi/js"
 import { mapState, mapGetters } from "vuex"
 import Register from "~/components/Register.vue"
 import Login from "~/components/Login.vue"
@@ -90,8 +97,9 @@ export default {
   },
   data() {
     return {
+      btnIcon: mdiChevronUp,
       snipcartKey: process.env.SNIPCART,
-      icons: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+      icons: [mdiFacebook, mdiTwitter, mdiLinkedin, mdiInstagram],
       links: ["Home", "About Us", "Team", "Services", "Blog", "Contact Us"],
       fab: false,
       snackbar: false,

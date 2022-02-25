@@ -23,9 +23,11 @@
             <v-rating
               :value="4.5"
               color="amber"
-              dense
               half-increments
               readonly
+              :empty-icon="off"
+              :full-icon="star"
+              :half-icon="half"
               size="14"
             ></v-rating>
 
@@ -65,6 +67,7 @@
 </template>
 
 <script>
+import { mdiStar, mdiStarHalf, mdiStarOff } from "@mdi/js"
 export default {
   props: {
     product: {
@@ -75,6 +78,9 @@ export default {
   data() {
     return {
       rating: 4,
+      star: mdiStar,
+      half: mdiStarHalf,
+      off: mdiStarOff,
     }
   },
   computed: {

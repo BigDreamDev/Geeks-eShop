@@ -41,6 +41,18 @@ export default {
 
     // '@nuxtjs/tailwindcss',
 
+    [
+      "nuxt-compress",
+      {
+        gzip: {
+          threshold: 8192,
+        },
+        brotli: {
+          threshold: 8192,
+        },
+      },
+    ],
+
     "@nuxt/postcss8",
 
     "@nuxtjs/vuetify",
@@ -55,13 +67,11 @@ export default {
   vuetify: {
     customVariables: ["~/assets/variables.scss"],
     treeShake: true,
-    // defaultAssets: true,
+    defaultAssets: false,
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
-    "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
 
@@ -69,9 +79,6 @@ export default {
 
     "@nuxtjs/dotenv",
   ],
-
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
 
   apollo: {
     clientConfigs: {
@@ -89,11 +96,16 @@ export default {
     // },
   },
 
+  loading: {
+    color: "#a82514",
+    height: "3px",
+  },
+
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
-    manifest: {
-      lang: "en",
-    },
+    name: "geeks-eshop",
+    theme_color: "#a82514",
+    display: "fullscreen",
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

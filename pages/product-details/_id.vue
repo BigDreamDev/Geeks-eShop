@@ -13,7 +13,13 @@
           >${{ product.data.attributes.price + 100 }}</del
         >
         <ins class="display-none"></ins>
-        <v-rating v-model="rating" large></v-rating>
+        <v-rating
+          v-model="rating"
+          :empty-icon="off"
+          :full-icon="star"
+          :half-icon="half"
+          large
+        ></v-rating>
         <button
           class="snipcart-add-item mt-4 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
           :data-item-id="product.data.id"
@@ -44,7 +50,13 @@
           >${{ product.data.attributes.price + 100 }}</del
         >
         <ins class="display-none"></ins>
-        <v-rating v-model="rating" large></v-rating>
+        <v-rating
+          v-model="rating"
+          :empty-icon="off"
+          :full-icon="star"
+          :half-icon="half"
+          large
+        ></v-rating>
         <button
           class="snipcart-add-item mt-4 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
           :data-item-id="product.data.id"
@@ -144,6 +156,8 @@
 </template>
 
 <script>
+import { mdiStar, mdiStarHalf, mdiStarOff } from "@mdi/js"
+
 import laptopQuery from "~/apollo/queries/laptop"
 import reviewsQuery from "~/apollo/queries/getReviews"
 import deleteReview from "~/apollo/mutations/deleteReview"
@@ -160,6 +174,9 @@ export default {
       rating: 4,
       review: "",
       error: false,
+      star: mdiStar,
+      half: mdiStarHalf,
+      off: mdiStarOff,
     }
   },
   computed: {
