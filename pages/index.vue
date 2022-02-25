@@ -51,11 +51,11 @@ export default {
       items: [
         {
           id: 1,
-          url: "b1.jpg",
+          url: "b1.webp",
         },
         {
           id: 2,
-          url: "b2.jpg",
+          url: "b2.webp",
         },
       ],
     }

@@ -10,7 +10,7 @@
       >
         <nuxt-link to="/guides/1">
           <div
-            class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/pc.jpg')] guides-bg"
+            class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/pc.webp')] guides-bg"
           ></div>
           <div
             class="mt-auto absolute bottom-0 left-0 py-3 px-4 w-full bg-gray-900 z-10 text-white bg-opacity-70"
@@ -31,7 +31,7 @@
       >
         <nuxt-link to="/guides/3">
           <div
-            class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/fan.jpg')] guides-bg"
+            class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/fan.webp')] guides-bg"
           ></div>
           <div
             class="mt-auto absolute bottom-0 left-0 py-3 px-4 max-h-[50%] w-full bg-gray-900 z-10 text-white bg-opacity-70"
@@ -53,7 +53,7 @@
       >
         <nuxt-link to="/guides/4">
           <div
-            class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/gpu.jpg')] guides-bg"
+            class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/gpu.webp')] guides-bg"
           ></div>
           <div
             class="mt-auto absolute bottom-0 left-0 py-3 px-4 max-h-[50%] w-full bg-gray-900 z-10 text-white bg-opacity-70"
@@ -78,7 +78,7 @@
       >
         <nuxt-link to="/guides/2">
           <div
-            class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/league.jpg')] guides-bg"
+            class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/league.webp')] guides-bg"
           ></div>
           <div
             class="mt-auto absolute bottom-0 left-0 py-3 px-4 max-h-[50%] w-full bg-gray-900 z-10 text-white bg-opacity-70"
@@ -102,7 +102,7 @@
       >
         <nuxt-link to="/guides/5">
           <div
-            class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/ces.jpg')] guides-bg"
+            class="w-full h-full hover:transform hover:scale-110 bg-[url('/guides/ces.webp')] guides-bg"
           ></div>
           <div
             class="mt-auto absolute bottom-0 left-0 py-3 px-4 max-h-[50%] w-full bg-gray-900 z-10 text-white bg-opacity-70"
