@@ -114,6 +114,24 @@ export default {
       plugins: {
         tailwindcss: {},
         autoprefixer: {},
+        "css-byebye": {
+          rulesToRemove: [
+            /.*\.v-application--is-rtl.*/,
+            // /.*\.theme--light.*/,
+            // /.*\.theme--dark.*/,
+            // /.*\.v-progress.*/,
+            /.*\rtl.*/,
+            /@keyframes*\rtl.*/,
+            /@-webkit*\rtl.*/,
+            // /.*\.v-icon.*/,
+            /.*\.elevation.*/,
+            /.*\.scroll.*/,
+            /.*\.slide.*/,
+            // /.*\.dialog.*/,
+            // /.*\.v-image.*/,
+            // /.*\.v-window.*/,
+          ],
+        },
       },
     },
     loaders: {

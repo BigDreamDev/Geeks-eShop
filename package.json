@@ -7,22 +7,24 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "analyze": "nuxt build --analyze",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "yarn lint:js"
   },
   "dependencies": {
     "@mdi/js": "^6.5.95",
     "@nuxtjs/apollo": "^4.0.1-rc.5",
-    "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/snipcart": "^1.3.1",
     "@nuxtjs/vercel-builder": "^0.22.1",
     "apollo-cache-inmemory": "^1.6.6",
     "core-js": "^3.15.1",
+    "css-byebye": "^3.1.0",
     "graphql-tag": "^2.12.6",
     "nuxt": "^2.15.7",
     "swiper": "5.x",
     "vue-awesome-swiper": "^4.1.1",
+    "vue-lazy-hydration": "^2.0.0-beta.4",
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {

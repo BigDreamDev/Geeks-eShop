@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-app-bar>
+  <v-app dark>
+    <v-app-bar class="h-16" dark>
       <!-- <v-btn text color="black" class="hover:cursor-pointer">Laptops</v-btn> -->
       <Navbar class="mb-4"></Navbar>
     </v-app-bar>
@@ -56,14 +56,10 @@
         </v-card-text>
 
         <v-card-text class="white--text pt-0">
-          Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet.
-          Mauris cursus commodo interdum. Praesent ut risus eget metus luctus
-          accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim
-          a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula
-          lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus
-          iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum
-          tempor vel ut orci. Orci varius natoque penatibus et magnis dis
-          parturient montes, nascetur ridiculus mus.
+          E-SHOP is passionate about technology and driven by innovation. We
+          dream, we dare and we strive to create an effortless and joyful
+          digital life for everyone. We're always in search of incredible ideas
+          and experiences.
         </v-card-text>
 
         <v-divider></v-divider>

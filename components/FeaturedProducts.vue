@@ -1,6 +1,10 @@
 <template>
-  <div class="bg-white">
-    <h2 class="underline decoration-main pl-8 font-bold text-4xl py-6">
+  <div
+    style="background-color: rgba(16, 16, 16, var(--tw-bg-opacity)) !important"
+  >
+    <h2
+      class="underline text-white decoration-main pl-8 font-bold text-4xl py-6"
+    >
       Featured Products
     </h2>
     <v-row>
@@ -11,12 +15,12 @@
           >
             ProArt Studiobook 16 OLED
           </h2>
-          <p class="mb-0">Born for Creative Pros</p>
-          <v-btn to="/featured/1" text dense class="py-0 px-4"
+          <p class="mb-0 text-white">Born for Creative Pros</p>
+          <v-btn to="/featured/1" text dense class="py-0 px-4 -ml-4 text-white"
             ><span class="lowercase">Learn More</span></v-btn
           >
         </div>
-        <v-img height="500" src="/f1.webp"></v-img>
+        <v-img height="500" src="/f1.png"></v-img>
       </v-col>
       <v-col md="6" class="relative">
         <div class="absolute top-14 left-1/4 z-10">
@@ -25,12 +29,12 @@
           >
             Asus ExpertBook B3 Flip
           </h2>
-          <p class="mb-0">Achieve more, anytime, anywhere</p>
-          <v-btn text dense class="py-0 px-4 lowercase"
-            ><span>Learn More</span></v-btn
+          <p class="mb-0 text-white">Achieve more, anytime, anywhere</p>
+          <v-btn text dense class="py-0 px-4 -ml-4 lowercase"
+            ><span class="text-white">Learn More</span></v-btn
           >
         </div>
-        <v-img height="500" src="/f2.jpg"></v-img>
+        <v-img height="500" src="/f2.png"></v-img>
       </v-col>
     </v-row>
   </div>

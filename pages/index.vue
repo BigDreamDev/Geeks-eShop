@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100">
+  <div class="bg-black">
     <v-carousel
       v-model="model"
       cycle
@@ -34,17 +34,22 @@
         </v-row>
       </v-parallax>
     </div>
-    <Deals />
-    <Guides />
+    <LazyHydrate when-visible>
+      <Deals />
+    </LazyHydrate>
+    <LazyHydrate when-visible>
+      <Guides />
+    </LazyHydrate>
   </div>
 </template>
 
 <script>
+import LazyHydrate from "vue-lazy-hydration"
 import FeaturedProducts from "~/components/FeaturedProducts.vue"
 import Guides from "~/components/Guides.vue"
 import Deals from "~/components/Deals.vue"
 export default {
-  components: { FeaturedProducts, Guides, Deals },
+  components: { FeaturedProducts, Guides, Deals, LazyHydrate },
   data() {
     return {
       model: 0,

@@ -5,6 +5,7 @@
         transition="fade-transition"
         class="mx-4 my-12 hover:shadow-2xl"
         max-width="374"
+        dark
       >
         <img
           height="250"

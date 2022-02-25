@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2 class="text-center font-bold text-black text-4xl mb-4">Guides</h2>
+    <h2 class="text-center font-bold text-white text-4xl pb-14">Guides</h2>
     <div
-      class="mb-8 grid grid-cols-4 gap-1 auto-rows-[300px] lg:grid-rows-[200px_minmax(200px,_1fr)_100px]"
+      class="grid grid-cols-4 gap-1 auto-rows-[300px] lg:grid-rows-[200px_minmax(200px,_1fr)_100px]"
     >
       <div
         sm="6"

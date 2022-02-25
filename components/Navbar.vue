@@ -1,5 +1,5 @@
 <template>
-  <div class="flex ml-6 mr-6 mt-4">
+  <div class="flex ml-6 mr-6 mt-4 text-white">
     <nuxt-link to="/">
       <span class="emoji mr-4"> 💻 </span>
     </nuxt-link>
@@ -13,9 +13,10 @@
       v-if="$apollo.queries.laptops.loading === false"
       open-on-hover
       offset-y
+      dark
     >
       <template #activator="{ on, attrs }">
-        <v-btn text dense dark v-bind="attrs" class="mt-1 text-black" v-on="on">
+        <v-btn text dense dark v-bind="attrs" class="mt-1" v-on="on">
           Laptops
         </v-btn>
       </template>
@@ -31,7 +32,7 @@
               path: `/product-details/${laptop.id}`,
             }"
           >
-            <v-list-item-title class="text-sm text-black hover:text-main">{{
+            <v-list-item-title class="text-sm text-white hover:text-main">{{
               laptop.attributes.model
             }}</v-list-item-title>
           </nuxt-link>
@@ -40,18 +41,17 @@
     </v-menu>
     <v-divider vertical></v-divider>
 
-    <!-- <v-btn v-else class="mt-2" text>Laptops</v-btn> -->
     <v-menu
       v-if="$apollo.queries.desktops.loading === false"
       open-on-hover
       offset-y
+      dark
     >
       <template #activator="{ on, attrs }">
-        <v-btn text dense dark v-bind="attrs" class="mt-1 text-black" v-on="on">
+        <v-btn text dense dark v-bind="attrs" class="mt-1" v-on="on">
           Desktops
         </v-btn>
       </template>
-      <v-divider vertical></v-divider>
 
       <v-list>
         <v-list-item
@@ -64,7 +64,7 @@
               path: `/product-details/${desktop.id}`,
             }"
           >
-            <v-list-item-title class="text-sm text-black hover:text-main">{{
+            <v-list-item-title class="text-sm text-white hover:text-main">{{
               desktop.attributes.model
             }}</v-list-item-title>
           </nuxt-link>
@@ -78,7 +78,7 @@
     >
     <v-btn
       v-if="!user"
-      class="mt-2 ml-auto text-black"
+      class="mt-1 ml-auto"
       text
       @click="triggerRegistrationModal"
       >Register/Login</v-btn

@@ -2,6 +2,7 @@
   <div>
     <v-dialog
       v-model="registrationModal"
+      dark
       width="500"
       height="600"
       @click:outside="closeModal"
