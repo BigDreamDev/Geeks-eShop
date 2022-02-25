@@ -16,7 +16,7 @@
         <v-card class="w-80 h-full p-3 mb-8">
           <img
             class="h-64 object-contain mx-auto"
-            :src="`${process.env.NUXT_PUBLIC_API_URL}${laptop.attributes.picture.data[0].attributes.url}`"
+            :src="laptop.attributes.picture.data[0].attributes.url"
             alt=""
           />
           <v-card-title>{{ laptop.attributes.model }}</v-card-title>
@@ -48,6 +48,11 @@ export default {
       laptops: [],
       rating: 4,
     }
+  },
+  computed: {
+    url() {
+      return process.env.NUXT_PUBLIC_API_URL
+    },
   },
   apollo: {
     laptops: {

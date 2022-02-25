@@ -26,7 +26,7 @@ export default {
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: false,
 
   eslint: {
     cache: false,
@@ -76,17 +76,17 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: "${process.env.NUXT_PUBLIC_API_URL}/graphql",
+        httpEndpoint: process.env.NUXT_PUBLIC_API_URL + "graphql",
       },
     },
-    defaultOptions: {
-      // See 'apollo' definition
-      // For example: default query options
-      $query: {
-        loadingKey: "loading",
-        fetchPolicy: "cache-and-network",
-      },
-    },
+    // defaultOptions: {
+    //   // See 'apollo' definition
+    //   // For example: default query options
+    //   $query: {
+    //     loadingKey: "loading",
+    //     fetchPolicy: "cache-and-network",
+    //   },
+    // },
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -102,6 +102,11 @@ export default {
       plugins: {
         tailwindcss: {},
         autoprefixer: {},
+      },
+    },
+    loaders: {
+      vue: {
+        prettify: false,
       },
     },
   },

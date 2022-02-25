@@ -2,10 +2,7 @@
   <div v-if="product" class="grid grid-cols-2 mt-4 mb-8 min-h-screen">
     <div class="px-8 col-span-2 sm:col-span-1 order-2 sm:order-1">
       <img
-        :src="
-          '${process.env.NUXT_PUBLIC_API_URL}' +
-          product.data.attributes.picture.data[0].attributes.url
-        "
+        :src="product.data.attributes.picture.data[0].attributes.url"
         alt=""
       />
       <div class="mt-4 sm:hidden">
@@ -23,7 +20,9 @@
           :data-item-price="product.data.attributes.price"
           :data-item-url="`${$route.fullPath}`"
           :data-item-description="product.data.attributes.longDescription"
-          :data-item-image="`${process.env.NUXT_PUBLIC_API_URL}${product.data.attributes.picture.data[0].attributes.url}`"
+          :data-item-image="
+            product.data.attributes.picture.data[0].attributes.url
+          "
           :data-item-name="product.data.attributes.model"
           v-bind="customFields"
         >
@@ -52,7 +51,9 @@
           :data-item-price="product.data.attributes.price"
           :data-item-url="`${$route.fullPath}`"
           :data-item-description="product.data.attributes.longDescription"
-          :data-item-image="`${process.env.NUXT_PUBLIC_API_URL}${product.data.attributes.picture.data[0].attributes.url}`"
+          :data-item-image="
+            product.data.attributes.picture.data[0].attributes.url
+          "
           :data-item-name="product.data.attributes.model"
           v-bind="customFields"
         >
@@ -162,6 +163,9 @@ export default {
     }
   },
   computed: {
+    url() {
+      return process.env.NUXT_PUBLIC_API_URL
+    },
     customFields() {
       return this.product.data.attributes.custom_field
         .map(({ model, required, options }) => ({

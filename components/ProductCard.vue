@@ -9,7 +9,7 @@
         <img
           height="250"
           class="object-contain h-64 mx-auto"
-          :src="`${process.env.NUXT_PUBLIC_API_URL}${product.attributes.picture.data[0].attributes.url}`"
+          :src="product.attributes.picture.data[0].attributes.url"
         />
 
         <v-card-title>{{ product.attributes.model }} </v-card-title>
@@ -77,14 +77,10 @@ export default {
       rating: 4,
     }
   },
-  mounted() {
-    console.log("MOUNTED")
-  },
-  unmounted() {
-    console.log("UNMOUNTED")
-  },
-  destroyed() {
-    console.log("DESTROYED")
+  computed: {
+    url() {
+      return process.env.NUXT_PUBLIC_API_URL
+    },
   },
 }
 </script>

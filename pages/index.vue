@@ -42,8 +42,9 @@
 <script>
 import FeaturedProducts from "~/components/FeaturedProducts.vue"
 import Guides from "~/components/Guides.vue"
+import Deals from "~/components/Deals.vue"
 export default {
-  components: { FeaturedProducts, Guides },
+  components: { FeaturedProducts, Guides, Deals },
   data() {
     return {
       model: 0,

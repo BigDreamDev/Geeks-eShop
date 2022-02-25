@@ -92,8 +92,12 @@
 import { mapState } from "vuex"
 import LaptopsQuery from "~/apollo/queries/laptops.gql"
 import DesktopssQuery from "~/apollo/queries/desktops.gql"
+import Cart from "~/components/Cart.vue"
 
 export default {
+  components: {
+    Cart,
+  },
   data() {
     return {
       laptops: [],

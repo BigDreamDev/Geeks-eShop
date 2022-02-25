@@ -17,11 +17,14 @@
 </template>
 
 <script>
-import { Swiper } from "vue-awesome-swiper"
+import { Swiper, SwiperSlide } from "vue-awesome-swiper"
+import ProductCard from "./ProductCard.vue"
 import "swiper/css/swiper.css"
 export default {
   components: {
     Swiper,
+    SwiperSlide,
+    ProductCard,
   },
   props: {
     products: {
