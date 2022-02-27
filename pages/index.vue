@@ -25,7 +25,7 @@
       </v-carousel-item>
     </v-carousel>
     <!-- <laptops></laptops> -->
-    <FeaturedProducts></FeaturedProducts>
+    <FeaturedProducts id="featured-products"></FeaturedProducts>
     <div>
       <v-parallax height="600" src="/offer.webp">
         <v-row class="relative" justify="start">
@@ -37,7 +37,7 @@
       </v-parallax>
     </div>
     <LazyHydrate when-visible>
-      <Deals />
+      <Deals id="deals" />
     </LazyHydrate>
 
     <v-lazy
@@ -48,7 +48,7 @@
       min-height="200"
       transition="fade-transition"
     >
-      <Guides />
+      <Guides id="guides" />
     </v-lazy>
   </div>
 </template>

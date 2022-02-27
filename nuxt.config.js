@@ -41,6 +41,10 @@ export default {
   plugins: [
     { src: "~/plugins/swiper.js", mode: "client" },
     { src: "~/plugins/vuexPersist", mode: "client" },
+    {
+      src: "~/plugins/scroll.js",
+      mode: "client",
+    },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

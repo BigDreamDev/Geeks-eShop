@@ -105,9 +105,11 @@
           color="white"
           text
           rounded
+          :v-scroll-to="{ el: link.hash }"
+          :to="{ path: '/', hash: link.hash }"
           class="my-2"
         >
-          {{ link }}
+          {{ link.name }}
         </v-btn>
       </v-row>
       <v-card flat tile class="indigo lighten-1 white--text text-center">
@@ -179,7 +181,14 @@ export default {
       btnIcon: mdiChevronUp,
       snipcartKey: process.env.SNIPCART,
       icons: [mdiFacebook, mdiTwitter, mdiLinkedin, mdiInstagram],
-      links: ["Home", "About Us", "Team", "Services", "Blog", "Contact Us"],
+      links: [
+        { name: "Home", hash: "" },
+        { name: "About Us", hash: "#about-us" },
+        { name: "Featured Products", hash: "#featured-products" },
+        { name: "Deals", hash: "#deals" },
+        { name: "Guides", hash: "#guides" },
+        { name: "Contact Us", hash: "" },
+      ],
       fab: false,
       snackbar: false,
       guides: [

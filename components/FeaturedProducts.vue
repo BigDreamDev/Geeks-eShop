@@ -3,7 +3,7 @@
     style="background-color: rgba(16, 16, 16, var(--tw-bg-opacity)) !important"
   >
     <h2
-      class="underline text-white decoration-main pl-8 font-bold text-4xl py-6"
+      class="underline text-white text-2xl decoration-main md:text-left text-center px-0 pl-8 font-bold md:text-4xl py-6"
     >
       Featured Products
     </h2>
@@ -13,7 +13,7 @@
           class="absolute top-10 sm:top-14 left-1/2 transform -translate-x-1/2 sm:translate-x-0 sm:left-1/4 z-10"
         >
           <h2
-            class="text-purple-700 bg-gradient-to-r from-red-400 via-pink-500 my-0 text-transparent bg-clip-text to-purple-500 px-0 font-bold text-2xl mx-auto"
+            class="text-purple-700 bg-gradient-to-r from-red-400 via-pink-500 my-0 text-transparent bg-clip-text to-purple-500 px-0 font-bold text-xl md:text-2xl mx-auto"
           >
             ProArt Studiobook 16 OLED
           </h2>
@@ -29,7 +29,7 @@
           class="absolute top-10 sm:top-14 left-1/2 transform -translate-x-1/2 sm:translate-x-0 sm:left-1/4 z-10"
         >
           <h2
-            class="text-yellow-700 bg-gradient-to-r from-blue-400 via-orange-500 my-0 text-transparent bg-clip-text to-purple-500 px-0 font-bold text-2xl mx-auto"
+            class="text-yellow-700 bg-gradient-to-r from-blue-400 via-orange-500 my-0 text-transparent bg-clip-text to-purple-500 px-0 font-bold text-xl md:text-2xl mx-auto"
           >
             Asus ExpertBook B3 Flip
           </h2>
