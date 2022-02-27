@@ -1,4 +1,4 @@
-<template>
+<template functional>
   <div>
     <h2 class="text-center font-bold text-white text-4xl pb-14">Guides</h2>
     <div
@@ -125,7 +125,9 @@
 </template>
 
 <script>
-export default {}
+export default {
+  functional: true,
+}
 </script>
 
 <style scoped></style>
