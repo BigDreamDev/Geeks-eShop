@@ -253,7 +253,6 @@ export default {
         }
       }
     )
-    console.log(this.items)
   },
   methods: {
     scroll() {
