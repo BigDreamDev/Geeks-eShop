@@ -9,7 +9,9 @@
     </h2>
     <v-row>
       <v-col md="6" class="relative">
-        <div class="absolute top-14 left-1/4 z-10">
+        <div
+          class="absolute top-10 sm:top-14 left-1/2 transform -translate-x-1/2 sm:translate-x-0 sm:left-1/4 z-10"
+        >
           <h2
             class="text-purple-700 bg-gradient-to-r from-red-400 via-pink-500 my-0 text-transparent bg-clip-text to-purple-500 px-0 font-bold text-2xl mx-auto"
           >
@@ -23,7 +25,9 @@
         <v-img height="500" src="/f1.png"></v-img>
       </v-col>
       <v-col md="6" class="relative">
-        <div class="absolute top-14 left-1/4 z-10">
+        <div
+          class="absolute top-10 sm:top-14 left-1/2 transform -translate-x-1/2 sm:translate-x-0 sm:left-1/4 z-10"
+        >
           <h2
             class="text-yellow-700 bg-gradient-to-r from-blue-400 via-orange-500 my-0 text-transparent bg-clip-text to-purple-500 px-0 font-bold text-2xl mx-auto"
           >

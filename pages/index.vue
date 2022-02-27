@@ -10,7 +10,9 @@
       <v-carousel-item v-for="(item, i) in items" :key="i">
         <v-sheet height="100%" tile>
           <v-row class="fill-height" align="center" justify="center">
-            <div class="absolute top-32 p-3 left-6 bg-gray-900 bg-opacity-60">
+            <div
+              class="absolute top-32 mx-2 p-3 left-0 sm:left-6 bg-gray-900 bg-opacity-60"
+            >
               <h2 class="text-white text-5xl">Your Favorite E-Shop</h2>
               <p class="text-white text-2xl">Acheive more, anytime, anywhere</p>
               <v-btn text dense class="text-white hover:text-main"
@@ -26,8 +28,8 @@
     <FeaturedProducts></FeaturedProducts>
     <div>
       <v-parallax height="600" src="/offer.webp">
-        <v-row class="items-center" justify="center">
-          <v-col cols="12">
+        <v-row class="relative" justify="start">
+          <v-col class="absolute top-1/3" cols="12">
             <h1 class="font-bold text-4xl">The Ultimate Holiday Gifts</h1>
             <h4 class="subheading pl-2">Limited Offer!</h4>
           </v-col>

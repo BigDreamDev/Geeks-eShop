@@ -1,7 +1,12 @@
 <template>
-  <div class="my-8">
+  <div class="my-8 bg-black">
     <h2 class="text-center font-bold text-white text-4xl">Deals</h2>
-    <v-tabs v-model="currentTab" mobile-break-point="100" fixed-tabs>
+    <v-tabs
+      v-model="currentTab"
+      class="bg-black w-full"
+      mobile-break-point="100"
+      grow
+    >
       <v-tab
         v-for="(tab, index) in tabs"
         :key="index"
@@ -71,4 +76,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.v-item-group ::v-deep .v-slide-group__prev {
+  display: none !important;
+}
+</style>

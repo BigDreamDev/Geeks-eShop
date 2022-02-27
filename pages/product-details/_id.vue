@@ -147,9 +147,14 @@
               outlined
               name="input-7-4"
               label="Add a Review"
-              value="The Woodman set to work at once, and so sharp was his axe that the tree was soon chopped nearly through."
             ></v-textarea>
-            <span>Pick your rating</span><v-rating v-model="rating"></v-rating>
+            <span>Pick your rating</span
+            ><v-rating
+              v-model="rating"
+              :empty-icon="off"
+              :full-icon="star"
+              :half-icon="half"
+            ></v-rating>
             <v-btn
               :disabled="!isRegistered"
               class="bg-main mt-3 text-white"

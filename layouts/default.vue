@@ -2,9 +2,78 @@
   <v-app dark>
     <v-app-bar class="h-16" dark>
       <!-- <v-btn text color="black" class="hover:cursor-pointer">Laptops</v-btn> -->
-      <Navbar class="mb-4"></Navbar>
+      <Navbar class="mb-4" @toggle-mobile="toggleMobileWindow"></Navbar>
     </v-app-bar>
+
     <component :is="currentComponent"></component>
+    <v-navigation-drawer v-model="mobileWindow" class="z-50" dark absolute top>
+      <v-list nav dense>
+        <nuxt-link tag="div" class="hover:cursor-pointer" to="/">
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>{{ homeIcon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title> Home </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </nuxt-link>
+        <v-list-group
+          v-for="item in items"
+          :key="item.title"
+          v-model="item.active"
+          :prepend-icon="item.action"
+          :append-icon="menuIcon"
+          no-action
+        >
+          <template #activator>
+            <v-list-item-content>
+              <v-list-item-title class="text-white">{{
+                item.title
+              }}</v-list-item-title>
+            </v-list-item-content>
+          </template>
+          <v-list-item v-for="child in item.items" :key="child.title">
+            <nuxt-link
+              tag="div"
+              class="hover:cursor-pointer"
+              :to="`/product-details/${child.id}`"
+            >
+              <v-list-item-content>
+                <v-list-item-title v-text="child.title"></v-list-item-title>
+              </v-list-item-content>
+            </nuxt-link>
+          </v-list-item>
+        </v-list-group>
+        <v-list-group
+          v-for="guide in guides"
+          :key="guide.title"
+          v-model="guide.active"
+          :prepend-icon="guide.action"
+          :append-icon="menuIcon"
+          no-action
+        >
+          <template #activator>
+            <v-list-item-content>
+              <v-list-item-title class="text-white">{{
+                guide.title
+              }}</v-list-item-title>
+            </v-list-item-content>
+          </template>
+          <v-list-item v-for="child in guide.items" :key="child.title">
+            <nuxt-link
+              tag="div"
+              class="hover:cursor-pointer"
+              :to="`/guides/${child.id}`"
+            >
+              <v-list-item-content>
+                <v-list-item-title v-text="child.title"></v-list-item-title>
+              </v-list-item-content>
+            </nuxt-link>
+          </v-list-item>
+        </v-list-group>
+      </v-list>
+    </v-navigation-drawer>
     <v-main>
       <v-container class="p-0" fluid>
         <v-btn
@@ -79,8 +148,15 @@ import {
   mdiTwitter,
   mdiLinkedin,
   mdiInstagram,
+  mdiLaptop,
+  mdiDesktopMac,
+  mdiChevronDown,
+  mdiHome,
+  mdiInformation,
 } from "@mdi/js"
-import { mapState, mapGetters } from "vuex"
+import { mapState } from "vuex"
+import LaptopsQuery from "~/apollo/queries/laptops.gql"
+import DesktopssQuery from "~/apollo/queries/desktops.gql"
 import Register from "~/components/Register.vue"
 import Login from "~/components/Login.vue"
 import Navbar from "~/components/Navbar.vue"
@@ -93,17 +169,56 @@ export default {
   },
   data() {
     return {
+      homeIcon: mdiHome,
+      infoIcon: mdiInformation,
+      drawer: true,
+      mobileWindow: false,
+      laptops: [],
+      desktops: [],
+      group: null,
       btnIcon: mdiChevronUp,
       snipcartKey: process.env.SNIPCART,
       icons: [mdiFacebook, mdiTwitter, mdiLinkedin, mdiInstagram],
       links: ["Home", "About Us", "Team", "Services", "Blog", "Contact Us"],
       fab: false,
       snackbar: false,
+      guides: [
+        {
+          action: mdiInformation,
+          active: false,
+          items: [
+            { title: "Extend your PC's lifespan", id: 1 },
+            { title: "Rocket League nails it", id: 2 },
+            { title: "Quiet your Laptop", id: 3 },
+            { title: "NEW RTX GPUs", id: 4 },
+            { title: "CES Gaming Gears", id: 5 },
+          ],
+          title: "Guides",
+        },
+      ],
+      items: [
+        {
+          action: mdiLaptop,
+          active: false,
+          items: null,
+          title: "Laptops",
+        },
+        {
+          action: mdiDesktopMac,
+          active: true,
+          items: null,
+          title: "Desktops",
+        },
+      ],
     }
   },
   computed: {
+    menuIcon() {
+      return mdiChevronDown
+    },
     ...mapState(["registrationModal", "currentComponent", "snackbarText"]),
-    ...mapGetters(["snackbarVisible"]),
+    // ...mapGetters(["snackbarVisible"]),
+    // ...mapGetters(["isMobileWindowOpen"]),
     snackbarVisible: {
       get() {
         return this.$store.getters.snackbarVisible
@@ -112,6 +227,33 @@ export default {
         return this.$store.commit("hideSnackbar")
       },
     },
+    // isMobileWindowOpen: {
+    //   get() {
+    //     return this.$store.getters.isMobileWindowOpen
+    //   },
+    //   set() {
+    //     return this.$store.commit("closeMobileWindow")
+    //   },
+    // },
+  },
+  mounted() {
+    this.items[0].items = this.desktops?.data?.attributes.products.data.map(
+      (desktop) => {
+        return {
+          title: desktop.attributes.model,
+          id: desktop.id,
+        }
+      }
+    )
+    this.items[1].items = this.laptops?.data?.attributes.products.data.map(
+      (laptop) => {
+        return {
+          title: laptop.attributes.model,
+          id: laptop.id,
+        }
+      }
+    )
+    console.log(this.items)
   },
   methods: {
     scroll() {
@@ -122,6 +264,20 @@ export default {
       if (typeof window === "undefined") return
       const top = window.pageYOffset || e.target.scrollTop || 0
       this.fab = top > 20
+    },
+    closeMobileWindow() {
+      this.$store.commit("closeMobileWindow")
+    },
+    toggleMobileWindow() {
+      this.mobileWindow = !this.mobileWindow
+    },
+  },
+  apollo: {
+    laptops: {
+      query: LaptopsQuery,
+    },
+    desktops: {
+      query: DesktopssQuery,
     },
   },
 }

@@ -2,6 +2,9 @@ html,
 body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   box-sizing: border-box;
 }
@@ -47,4 +50,11 @@ body {
 
 .guides-bg {
   @apply bg-cover bg-no-repeat transition-all duration-1000 bg-center;
+}
+
+.v-tabs:not(.v-tabs--vertical):not(.v-tabs--right)
+  > .v-slide-group--is-overflowing.v-tabs-bar--is-mobile:not(.v-slide-group--has-affixes)
+  .v-slide-group__prev {
+  display: none !important;
+  visibility: hidden;
 }

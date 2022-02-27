@@ -2,6 +2,7 @@ import userInfoQuery from "~/apollo/queries/userInfo.gql"
 import loginUser from "~/apollo/mutations/loginUser"
 
 export const state = () => ({
+  mobileWindow: true,
   currentTab: 0,
   registrationModal: false,
   jwt: null,
@@ -18,6 +19,9 @@ export const getters = {
   },
   snackbarVisible: (state) => {
     return state.snackbarVisible
+  },
+  isMobileWindowOpen: (state) => {
+    return state.mobileWindow
   },
 }
 
@@ -56,6 +60,12 @@ export const mutations = {
   updateSnackbar(state, payload) {
     state.snackbarText = payload
     state.snackbarVisible = true
+  },
+  toggleMobileWindow(state) {
+    state.mobileWindow = !state.mobileWindow
+  },
+  closeMobileWindow(state) {
+    state.mobileWindow = false
   },
 }
 
