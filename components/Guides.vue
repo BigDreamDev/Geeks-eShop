@@ -1,6 +1,10 @@
 <template functional>
   <div>
-    <h2 class="text-center font-bold text-white text-4xl pb-14">Guides</h2>
+    <h2
+      class="text-white font-bold text-4xl decoration-red-500 underline underline-red-500 underline-offset-4 text-center pb-14"
+    >
+      Guides
+    </h2>
     <div
       class="grid grid-cols-4 gap-1 auto-rows-[300px] lg:grid-rows-[200px_minmax(200px,_1fr)_100px]"
     >

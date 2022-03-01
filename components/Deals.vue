@@ -1,6 +1,10 @@
 <template>
   <div class="my-8 bg-black">
-    <h2 class="text-center font-bold text-white text-4xl">Deals</h2>
+    <h2
+      class="text-white font-bold text-4xl decoration-red-500 underline underline-red-500 underline-offset-4 text-center"
+    >
+      Deals
+    </h2>
     <v-tabs
       v-model="currentTab"
       class="bg-black w-full"

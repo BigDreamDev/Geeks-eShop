@@ -6,6 +6,7 @@
       :interval="4000"
       :show-arrows="false"
       :height="carouselHeight"
+      hide-delimiters
     >
       <v-carousel-item v-for="(item, i) in items" :key="i">
         <v-sheet height="100%" tile>
@@ -24,24 +25,38 @@
         </v-sheet>
       </v-carousel-item>
     </v-carousel>
-    <!-- <laptops></laptops> -->
+
     <FeaturedProducts id="featured-products"></FeaturedProducts>
+
     <LazyHydrate when-visible>
       <Gifts />
     </LazyHydrate>
+
     <LazyHydrate when-visible>
       <Deals id="deals" />
     </LazyHydrate>
 
     <v-lazy
-      v-model="isActive"
+      v-model="customers"
       :options="{
-        threshold: 0.2,
+        threshold: 0.1,
       }"
       min-height="200"
       transition="fade-transition"
     >
-      <Guides id="guides" />
+      <Customers />
+    </v-lazy>
+
+    <v-lazy
+      id="guides"
+      v-model="guides"
+      :options="{
+        threshold: 0.1,
+      }"
+      min-height="200"
+      transition="fade-transition"
+    >
+      <Guides />
     </v-lazy>
   </div>
 </template>
@@ -52,12 +67,21 @@ import FeaturedProducts from "~/components/FeaturedProducts.vue"
 import Guides from "~/components/Guides.vue"
 import Deals from "~/components/Deals.vue"
 import Gifts from "~/components/Gifts.vue"
+import Customers from "~/components/Customers.vue"
 export default {
-  components: { FeaturedProducts, Guides, Deals, LazyHydrate, Gifts },
+  components: {
+    FeaturedProducts,
+    Guides,
+    Deals,
+    LazyHydrate,
+    Gifts,
+    Customers,
+  },
   data() {
     return {
       model: 0,
-      isActive: false,
+      guides: false,
+      customers: false,
       items: [
         {
           id: 1,

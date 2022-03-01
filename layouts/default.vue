@@ -6,6 +6,7 @@
     </v-app-bar>
 
     <component :is="currentComponent"></component>
+
     <v-navigation-drawer v-model="mobileWindow" class="z-50" dark absolute top>
       <v-list nav dense>
         <nuxt-link tag="div" class="hover:cursor-pointer" to="/">
@@ -74,6 +75,7 @@
         </v-list-group>
       </v-list>
     </v-navigation-drawer>
+
     <v-main>
       <v-container class="p-0" fluid>
         <v-btn
@@ -97,6 +99,7 @@
         <div v-once id="snipcart" hidden :data-api-key="snipcartKey"></div>
       </v-container>
     </v-main>
+
     <v-footer dark padless>
       <v-row justify="center" no-gutters>
         <v-btn
@@ -106,7 +109,7 @@
           text
           rounded
           :v-scroll-to="{ el: link.hash }"
-          :to="{ path: '/', hash: link.hash }"
+          :to="{ path: link.path, hash: link.hash }"
           class="my-2"
         >
           {{ link.name }}
@@ -182,12 +185,12 @@ export default {
       snipcartKey: process.env.SNIPCART,
       icons: [mdiFacebook, mdiTwitter, mdiLinkedin, mdiInstagram],
       links: [
-        { name: "Home", hash: "" },
-        { name: "About Us", hash: "#about-us" },
-        { name: "Featured Products", hash: "#featured-products" },
-        { name: "Deals", hash: "#deals" },
-        { name: "Guides", hash: "#guides" },
-        { name: "Contact Us", hash: "" },
+        { name: "Home", hash: "", path: "/" },
+        { name: "About Us", hash: "#about-us", path: "/" },
+        { name: "Featured Products", hash: "#featured-products", path: "/" },
+        { name: "Deals", hash: "#deals", path: "/" },
+        { name: "Guides", hash: "#guides", path: "/" },
+        { name: "Contact Us", hash: "", path: "/contact-us" },
       ],
       fab: false,
       snackbar: false,
