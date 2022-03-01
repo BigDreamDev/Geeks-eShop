@@ -6,18 +6,20 @@
           class="flex flex-col justify-center min-h-[calc(100vh-70px)] h-full"
         >
           <h2
-            class="text-white text-transparent bg-clip-text bg-gradient-to-br from-pink-500 via-purple-500 to-red-600 font-bold text-6xl mb-5 text-center"
+            class="text-transparent bg-clip-text bg-gradient-to-br from-pink-500 via-purple-500 to-red-600 font-bold text-6xl mb-5 text-center"
           >
             Your Favorite E-Shop
           </h2>
           <p class="text-white text-xl text-center">
             Acheive more, anytime, anywhere
           </p>
-          <button
-            class="text-white mx-auto block px-6 py-2 transition ease-in-out bg-gradient-to-br from-pink-500 via-purple-500 to-red-600 hover:-translate-y-1 hover:scale-110 duration-500 mt-5"
-          >
-            View Our Products
-          </button>
+          <nuxt-link :to="{ path: '/', hash: '#featured-products' }">
+            <button
+              class="text-white mx-auto block px-6 py-2 transition ease-in-out bg-gradient-to-br from-pink-500 via-purple-500 to-red-600 hover:-translate-y-1 hover:scale-110 duration-500 mt-5"
+            >
+              Featured Products
+            </button>
+          </nuxt-link>
         </div>
       </v-col>
       <v-col class="p-0" cols="12" sm="6">
@@ -83,6 +85,17 @@
     >
       <Guides />
     </v-lazy>
+    <v-lazy
+      id="guides"
+      v-model="testimonials"
+      :options="{
+        threshold: 0.1,
+      }"
+      min-height="200"
+      transition="fade-transition"
+    >
+      <Testimonials></Testimonials>
+    </v-lazy>
   </div>
 </template>
 
@@ -93,6 +106,7 @@ import Guides from "~/components/Guides.vue"
 import Deals from "~/components/Deals.vue"
 import Gifts from "~/components/Gifts.vue"
 import Customers from "~/components/Customers.vue"
+import Testimonials from "~/components/Testimonials.vue"
 export default {
   components: {
     FeaturedProducts,
@@ -101,12 +115,14 @@ export default {
     LazyHydrate,
     Gifts,
     Customers,
+    Testimonials,
   },
   data() {
     return {
       model: 0,
       guides: false,
       customers: false,
+      testimonials: false,
       items: [
         {
           id: 1,
