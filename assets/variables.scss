@@ -11,3 +11,26 @@ $color-pack: false;
     )
   );
 }
+
+$body-font-family: "Inter" !important;
+$heading-font-family: $body-font-family;
+$headings: (
+  "h1": (
+    "font-family": $heading-font-family,
+  ),
+  "h2": (
+    "font-family": $heading-font-family,
+  ),
+  "h3": (
+    "font-family": $heading-font-family,
+  ),
+  "h4": (
+    "font-family": $heading-font-family,
+  ),
+  "h5": (
+    "font-family": $heading-font-family,
+  ),
+  "h6": (
+    "font-family": $heading-font-family,
+  ),
+);

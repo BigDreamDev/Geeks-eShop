@@ -60,6 +60,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     "@nuxtjs/eslint-module",
+    "@nuxtjs/google-fonts",
 
     // '@nuxtjs/tailwindcss',
 
@@ -81,6 +82,17 @@ export default {
 
     "@nuxtjs/snipcart",
   ],
+
+  googleFonts: {
+    families: {
+      Inter: {
+        wght: [500, 700],
+      },
+      // "Inter+sans-serif": true,
+    },
+    display: "swap",
+    preconnect: true,
+  },
 
   snipcart: {
     key: process.env.SNIPCART,

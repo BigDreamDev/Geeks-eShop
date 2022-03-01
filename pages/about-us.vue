@@ -2,7 +2,7 @@
   <div class="kv__banner p-0">
     <figure class="img__kv__banner"></figure>
     <div
-      class="absolute left-1/2 transform top-32 bg-black bg-opacity-40 backdrop-blur-lg p-4 -translate-x-1/2 text-white"
+      class="absolute left-1/2 transform w-full md:w-auto top-32 bg-black bg-opacity-40 backdrop-blur-lg p-4 -translate-x-1/2 text-white"
     >
       <h2 class="font-bold text-4xl text-center mb-4">Who we are</h2>
       <p class="mb-0 text-base max-w-prose text-center">

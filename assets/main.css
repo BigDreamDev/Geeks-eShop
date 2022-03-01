@@ -6,6 +6,12 @@ body {
   height: 100%;
   scroll-behavior: smooth;
   box-sizing: border-box;
+  /* font-family: "DM Mono", monospace !important; */
+  font-family: "Inter", sans-serif !important;
+}
+
+body {
+  /* font-family: "DM Mono", monospace !important; */
 }
 
 @tailwind base;

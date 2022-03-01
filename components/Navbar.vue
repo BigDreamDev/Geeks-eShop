@@ -108,6 +108,9 @@
           </v-list>
         </v-menu>
         <v-divider vertical></v-divider>
+        <v-btn class="mt-1" to="/about-us" text flat>About us</v-btn>
+        <v-divider vertical></v-divider>
+
         <v-btn v-if="user != null" text class="mt-1 text-white">
           Hi there {{ user.username }}</v-btn
         >

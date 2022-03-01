@@ -73,6 +73,17 @@
             </nuxt-link>
           </v-list-item>
         </v-list-group>
+
+        <nuxt-link tag="div" class="hover:cursor-pointer" to="/about-us">
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>{{ aboutIcon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>About us</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </nuxt-link>
       </v-list>
     </v-navigation-drawer>
 
@@ -158,6 +169,7 @@ import {
   mdiChevronDown,
   mdiHome,
   mdiInformation,
+  mdiHeadQuestion,
 } from "@mdi/js"
 import { mapState } from "vuex"
 import LaptopsQuery from "~/apollo/queries/laptops.gql"
@@ -175,6 +187,7 @@ export default {
   data() {
     return {
       homeIcon: mdiHome,
+      aboutIcon: mdiHeadQuestion,
       infoIcon: mdiInformation,
       drawer: true,
       mobileWindow: false,
