@@ -186,7 +186,7 @@ export default {
       icons: [mdiFacebook, mdiTwitter, mdiLinkedin, mdiInstagram],
       links: [
         { name: "Home", hash: "", path: "/" },
-        { name: "About Us", hash: "#about-us", path: "/" },
+        { name: "About Us", path: "/about-us" },
         { name: "Featured Products", hash: "#featured-products", path: "/" },
         { name: "Deals", hash: "#deals", path: "/" },
         { name: "Guides", hash: "#guides", path: "/" },

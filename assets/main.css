@@ -50,6 +50,9 @@ body {
 .guides-bg {
   @apply bg-cover bg-no-repeat transition-all duration-1000 bg-center;
 }
+.about-bg {
+  @apply bg-cover bg-no-repeat transition-all duration-1000 bg-center;
+}
 
 .v-tabs:not(.v-tabs--vertical):not(.v-tabs--right)
   > .v-slide-group--is-overflowing.v-tabs-bar--is-mobile:not(.v-slide-group--has-affixes)
