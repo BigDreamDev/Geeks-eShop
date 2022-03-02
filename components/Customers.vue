@@ -1,7 +1,7 @@
 <template functional>
   <div>
     <h2
-      class="text-white font-bold text-4xl decoration-red-500 underline underline-red-500 underline-offset-4 text-center"
+      class="text-white pb-4 font-bold text-4xl decoration-red-500 underline underline-red-500 underline-offset-4 text-center"
     >
       Our Customers
     </h2>

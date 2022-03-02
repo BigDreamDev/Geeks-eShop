@@ -1,8 +1,8 @@
 <template>
   <div>
-    <section class="relative py-20 2xl:py-40 overflow-hidden">
+    <section class="relative overflow-hidden">
       <img
-        class="absolute top-0 right-0 -mr-80 -mt-80"
+        class="absolute top-0 right-0 -mr-80"
         src="zospace-assets/lines/circle.svg"
         alt=""
       />
@@ -13,8 +13,10 @@
       />
       <div class="relative container px-4 mx-auto">
         <div class="max-w-5xl mx-auto">
-          <div class="text-center mb-20 lg:mb-32">
-            <h2 class="mt-12 text-5xl font-bold font-heading text-white">
+          <div class="text-center mb-10 lg:mb-16">
+            <h2
+              class="text-white pb-4 font-bold text-4xl decoration-red-500 underline underline-red-500 underline-offset-4 text-center"
+            >
               What people say
             </h2>
           </div>

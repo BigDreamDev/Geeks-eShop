@@ -3,7 +3,7 @@
     <v-row class="p-0 m-0">
       <v-col class="p-0" cols="12" sm="6">
         <div
-          class="flex flex-col justify-center min-h-[calc(100vh-70px)] h-full"
+          class="flex flex-col justify-center min-h-[calc(100vh-64px)] h-full"
         >
           <h2
             class="text-transparent bg-clip-text bg-gradient-to-br from-pink-500 via-purple-500 to-red-600 font-bold text-6xl mb-5 text-center"
@@ -33,7 +33,7 @@
         >
           <v-carousel-item v-for="(item, i) in items" :key="i">
             <v-sheet height="100%" tile>
-              <v-row class="fill-height" align="center" justify="center">
+              <v-row class="fill-height m-0" align="center" justify="center">
                 <!-- <div
                   class="absolute top-32 mx-2 p-3 left-0 sm:left-6 bg-gray-900 bg-opacity-60"
                 >
@@ -85,6 +85,7 @@
     >
       <Guides />
     </v-lazy>
+
     <v-lazy
       id="guides"
       v-model="testimonials"
@@ -146,5 +147,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped></style>
