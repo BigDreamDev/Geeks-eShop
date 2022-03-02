@@ -3,10 +3,10 @@
     <v-row class="p-0 m-0">
       <v-col class="p-0" cols="12" sm="6">
         <div
-          class="flex flex-col justify-center min-h-[calc(100vh-64px)] h-full"
+          class="flex backdrop-blur-xl bg-gradient-to-br from-gray-700 to-zinc-900 flex-col justify-center min-h-[calc(100vh-64px)] h-full"
         >
           <h2
-            class="text-transparent bg-clip-text bg-gradient-to-br from-pink-500 via-purple-500 to-red-600 font-bold text-6xl mb-5 text-center"
+            class="text-transparent bg-clip-text bg-gradient-to-br from-red-500 via-red-700 to-red-800 font-bold text-6xl lg:text-7xl mb-5 text-center"
           >
             Your Favorite E-Shop
           </h2>
@@ -15,7 +15,7 @@
           </p>
           <nuxt-link :to="{ path: '/', hash: '#featured-products' }">
             <button
-              class="text-white mx-auto block px-6 py-2 transition ease-in-out bg-gradient-to-br from-pink-500 via-purple-500 to-red-600 hover:-translate-y-1 hover:scale-110 duration-500 mt-5"
+              class="text-white mx-auto block px-8 py-4 transition ease-in-out bg-gradient-to-br from-red-500 via-red-700 to-red-800 hover:-translate-y-1 hover:scale-110 duration-500 mt-5"
             >
               Featured Products
             </button>

@@ -84,6 +84,17 @@
             </v-list-item-content>
           </v-list-item>
         </nuxt-link>
+
+        <nuxt-link tag="div" class="hover:cursor-pointer" to="/faqs">
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>{{ faqsIcon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>FAQs</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </nuxt-link>
       </v-list>
     </v-navigation-drawer>
 
@@ -96,10 +107,10 @@
           fixed
           bottom
           right
-          class="z-50"
+          class="z-50 bg-zinc-600"
           @click="scroll"
         >
-          <v-icon class="text-main" size="24px"> {{ btnIcon }} </v-icon>
+          <v-icon class="text-red-500" size="24px"> {{ btnIcon }} </v-icon>
         </v-btn>
         <v-snackbar v-model="snackbarVisible">
           <p class="text-red-600 font-bold text-xl my-auto text-center">
@@ -126,7 +137,7 @@
           {{ link.name }}
         </v-btn>
       </v-row>
-      <v-card flat tile class="indigo lighten-1 white--text text-center">
+      <v-card text tile class="indigo lighten-1 white--text text-center">
         <v-card-text>
           <v-btn
             v-for="icon in icons"
@@ -170,6 +181,7 @@ import {
   mdiHome,
   mdiInformation,
   mdiHeadQuestion,
+  mdiChatQuestion,
 } from "@mdi/js"
 import { mapState } from "vuex"
 import LaptopsQuery from "~/apollo/queries/laptops.gql"
@@ -186,6 +198,7 @@ export default {
   },
   data() {
     return {
+      faqsIcon: mdiChatQuestion,
       homeIcon: mdiHome,
       aboutIcon: mdiHeadQuestion,
       infoIcon: mdiInformation,

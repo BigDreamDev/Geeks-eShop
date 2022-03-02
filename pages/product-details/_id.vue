@@ -120,7 +120,7 @@
                   class="absolute right-0 top-2"
                   @click="deleteReview(rev.id)"
                 >
-                  <v-icon>mdi-close</v-icon>
+                  <v-icon class="text-red-500">{{ closeIcon }}</v-icon>
                 </v-btn>
                 <p class="font-bold pt-3">
                   {{ rev.attributes.user.data.attributes.username }}
@@ -170,7 +170,7 @@
 </template>
 
 <script>
-import { mdiStar, mdiStarHalf, mdiStarOff } from "@mdi/js"
+import { mdiStar, mdiStarHalf, mdiStarOff, mdiClose } from "@mdi/js"
 
 import laptopQuery from "~/apollo/queries/laptop"
 import reviewsQuery from "~/apollo/queries/getReviews"
@@ -191,6 +191,7 @@ export default {
       star: mdiStar,
       half: mdiStarHalf,
       off: mdiStarOff,
+      closeIcon: mdiClose,
     }
   },
   computed: {
