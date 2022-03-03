@@ -46,9 +46,8 @@
                       alt=""
                     />
                     <p class="mb-8 text-lg text-gray-200">
-                      The brown me malesuada nisi quis arcu ultrices, a
-                      fermentum libero maximus. Donec est urna, semper. At sem
-                      quis, congue dictum ipsum quam, sagittis.
+                      Very cool company for computer hardware I have a lot of
+                      things made by them in my house.
                     </p>
                     <div class="flex mb-4">
                       <img
@@ -106,9 +105,9 @@
                       alt=""
                     />
                     <p class="mb-8 text-lg text-gray-200">
-                      The brown me malesuada nisi quis arcu ultrices, a
-                      fermentum libero maximus. Donec est urna, semper. At sem
-                      quis, congue dictum ipsum quam, sagittis.
+                      Love my ROG laptop from E-Shop. Amazing quality for the
+                      money I paid. Recommend this brand to all of the people
+                      asking me for advice.
                     </p>
                     <div class="flex mb-4">
                       <img

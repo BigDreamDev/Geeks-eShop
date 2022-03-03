@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="guide.data"
-    class="bg-black px-4 min-h-screen text-white min-h-screen"
+    class="bg-black px-4 flex flex-col items-center text-white min-h-screen"
   >
     <h1 class="text-4xl py-20 font-bold font-mono">
       {{ guide.data.attributes.headline }}

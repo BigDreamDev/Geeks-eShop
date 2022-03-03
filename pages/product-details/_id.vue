@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-if="product" class="grid grid-cols-2 pt-4 pb-8 min-h-screen">
+    <div
+      v-if="product"
+      class="grid grid-cols-2 pt-4 text-white pb-8 min-h-screen"
+    >
       <div class="px-8 col-span-2 sm:col-span-1 order-2 sm:order-1">
         <img
           :src="product.data.attributes.picture.data[0].attributes.url"
@@ -22,7 +25,7 @@
             large
           ></v-rating>
           <button
-            class="snipcart-add-item mt-4 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+            class="snipcart-add-item mt-4 bg-white hover:bg-gray-100 font-semibold py-2 px-4 border border-white rounded shadow"
             :data-item-id="product.data.id"
             :data-item-price="product.data.attributes.price"
             :data-item-url="`${$route.fullPath}`"
@@ -144,6 +147,7 @@
             </h2>
             <v-textarea
               v-model="review"
+              dark
               outlined
               name="input-7-4"
               label="Add a Review"

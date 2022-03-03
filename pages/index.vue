@@ -1,7 +1,7 @@
 <template>
   <div class="bg-black">
     <v-row class="p-0 m-0">
-      <v-col class="p-0" cols="12" sm="6">
+      <!-- <v-col class="p-0" cols="12" sm="6">
         <div
           class="flex backdrop-blur-xl bg-gradient-to-br from-gray-700 to-zinc-900 flex-col justify-center min-h-[calc(100vh-64px)] h-full"
         >
@@ -15,14 +15,14 @@
           </p>
           <nuxt-link :to="{ path: '/', hash: '#featured-products' }">
             <button
-              class="text-white mx-auto block px-8 py-4 transition ease-in-out bg-gradient-to-br from-red-500 via-red-700 to-red-800 hover:-translate-y-1 hover:scale-110 duration-500 mt-5"
+              class="text-white mx-auto block px-8 py-4 transition ease-in-out bg-gradient-to-br from-red-500 via-red-700 to-red-800 hover:scale-110 duration-500 mt-5"
             >
               Featured Products
             </button>
           </nuxt-link>
         </div>
-      </v-col>
-      <v-col class="p-0" cols="12" sm="6">
+      </v-col> -->
+      <v-col class="p-0" cols="12">
         <v-carousel
           v-model="model"
           cycle
@@ -45,7 +45,7 @@
                     >Learn more</v-btn
                   >
                 </div> -->
-                <img class="object-cover w-full" :src="item.url" />
+                <img class="object-cover bg-center w-full" :src="item.url" />
               </v-row>
             </v-sheet>
           </v-carousel-item>
@@ -127,11 +127,11 @@ export default {
       items: [
         {
           id: 1,
-          url: "b1.webp",
+          url: "bg11.webp",
         },
         {
           id: 2,
-          url: "b2.webp",
+          url: "bg22.webp",
         },
       ],
     }

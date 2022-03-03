@@ -98,72 +98,78 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main>
-      <v-container class="p-0" fluid>
-        <v-btn
-          v-show="fab"
-          v-scroll="onScroll"
-          fab
-          fixed
-          bottom
-          right
-          class="z-50 bg-zinc-600"
-          @click="scroll"
-        >
-          <v-icon class="text-red-500" size="24px"> {{ btnIcon }} </v-icon>
-        </v-btn>
-        <v-snackbar v-model="snackbarVisible">
-          <p class="text-red-600 font-bold text-xl my-auto text-center">
-            {{ snackbarText }}
-          </p>
-        </v-snackbar>
-        <nuxt />
-        <div v-once id="snipcart" hidden :data-api-key="snipcartKey"></div>
-      </v-container>
+    <v-main class="bg-zinc-900">
+      <!-- <v-container class="p-0" fluid> -->
+      <v-btn
+        v-show="fab"
+        v-scroll="onScroll"
+        fab
+        fixed
+        bottom
+        right
+        class="z-50 bg-zinc-600"
+        @click="scroll"
+      >
+        <v-icon class="text-red-500" size="24px"> {{ btnIcon }} </v-icon>
+      </v-btn>
+      <v-snackbar v-model="snackbarVisible">
+        <p class="text-red-600 font-bold text-xl my-auto text-center">
+          {{ snackbarText }}
+        </p>
+      </v-snackbar>
+      <nuxt />
+      <div v-once id="snipcart" hidden :data-api-key="snipcartKey"></div>
+      <!-- </v-container> -->
     </v-main>
 
     <v-footer dark padless>
-      <v-row justify="center" no-gutters>
-        <v-btn
-          v-for="link in links"
-          :key="link"
-          color="white"
-          text
-          rounded
-          :v-scroll-to="{ el: link.hash }"
-          :to="{ path: link.path, hash: link.hash }"
-          class="my-2"
-        >
-          {{ link.name }}
-        </v-btn>
-      </v-row>
-      <v-card text tile class="indigo lighten-1 white--text text-center">
-        <v-card-text>
+      <v-row class="flex flex-col" justify="center" align="center" no-gutters>
+        <div class="flex flex-row justify-center flex-wrap">
           <v-btn
-            v-for="icon in icons"
-            :key="icon"
-            class="mx-4 white--text"
-            icon
+            v-for="link in links"
+            :key="link"
+            color="white"
+            text
+            rounded
+            :v-scroll-to="{ el: link.hash }"
+            :to="{ path: link.path, hash: link.hash }"
+            class="my-2"
           >
-            <v-icon size="24px">
-              {{ icon }}
-            </v-icon>
+            {{ link.name }}
           </v-btn>
-        </v-card-text>
+        </div>
+        <v-card
+          text
+          tile
+          class="indigo self-center lighten-1 white--text text-center"
+        >
+          <v-card-text>
+            <v-btn
+              v-for="icon in icons"
+              :key="icon"
+              class="mx-4 white--text"
+              icon
+            >
+              <v-icon size="24px">
+                {{ icon }}
+              </v-icon>
+            </v-btn>
+          </v-card-text>
 
-        <v-card-text class="white--text pt-0">
-          E-SHOP is passionate about technology and driven by innovation. We
-          dream, we dare and we strive to create an effortless and joyful
-          digital life for everyone. We're always in search of incredible ideas
-          and experiences.
-        </v-card-text>
+          <v-card-text class="white--text pt-0">
+            E-SHOP is passionate about technology and driven by innovation. We
+            dream, we dare and we strive to create an effortless and joyful
+            digital life for everyone. We're always in search of incredible
+            ideas and experiences.
+          </v-card-text>
 
-        <v-divider></v-divider>
+          <v-divider></v-divider>
 
-        <v-card-text class="white--text">
-          {{ new Date().getFullYear() }} — <strong>My-EShop</strong>
-        </v-card-text>
-      </v-card>
+          <v-card-text class="white--text">
+            {{ new Date().getFullYear() }} — <strong>My-EShop</strong>
+          </v-card-text>
+        </v-card>
+      </v-row>
     </v-footer>
   </v-app>
 </template>

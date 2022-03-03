@@ -28,14 +28,14 @@ export default {}
   margin-right: auto;
   width: 100%;
   max-width: 2560px;
-  height: 100vh;
+  height: 600px;
 }
 .kv__banner .img__kv__banner {
   position: absolute;
   top: 0;
   width: 100%;
   /* height: 550px; */
-  height: 100vh;
+  height: 100%;
   -webkit-transform: scale(1.2) translateZ(0px);
   transform: scale(1.2) translateZ(0px);
   -webkit-filter: grayscale(0);

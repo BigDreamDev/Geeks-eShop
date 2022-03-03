@@ -17,12 +17,12 @@ export default {
       {
         rel: "preload",
         as: "image",
-        href: "/b1.webp",
+        href: "/bg11.webp",
       },
       {
         rel: "preload",
         as: "image",
-        href: "/b2.webp",
+        href: "/bg22.webp",
       },
       {
         rel: "preload",
@@ -30,7 +30,7 @@ export default {
         href: "https://cdn.snipcart.com/themes/v3.0/default/snipcart.css",
       },
 
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.png" },
     ],
   },
 
@@ -140,6 +140,7 @@ export default {
     name: "geeks-eshop",
     theme_color: "#a82514",
     display: "fullscreen",
+    icon: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
