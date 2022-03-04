@@ -5,8 +5,13 @@
       class="grid grid-cols-2 pt-4 text-white pb-8 min-h-screen"
     >
       <div class="px-8 col-span-2 sm:col-span-1 order-2 sm:order-1">
-        <img
-          :src="product.data.attributes.picture.data[0].attributes.url"
+        <nuxt-img
+          provider="cloudinary"
+          :src="
+            imgAddressClipper(
+              product.data.attributes.picture.data[0].attributes.url
+            )
+          "
           alt=""
         />
         <div class="mt-4 sm:hidden">
@@ -181,6 +186,8 @@ import reviewsQuery from "~/apollo/queries/getReviews"
 import deleteReview from "~/apollo/mutations/deleteReview"
 import { CreateReview } from "~/apollo/constants/graphql"
 import Spinner from "~/components/Spinner.vue"
+import imgAddressClipper from "~/utils/cloudinaryAddressClipper"
+
 export default {
   components: { Spinner },
   data() {
@@ -301,6 +308,7 @@ export default {
       })
       this.$apollo.queries.reviews.refetch()
     },
+    imgAddressClipper,
   },
   apollo: {
     product: {

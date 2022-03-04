@@ -55,9 +55,16 @@
 
     <FeaturedProducts id="featured-products"></FeaturedProducts>
 
-    <LazyHydrate when-visible>
+    <v-lazy
+      v-model="gifts"
+      :options="{
+        threshold: 0.1,
+      }"
+      min-height="624"
+      transition="fade-transition"
+    >
       <Gifts />
-    </LazyHydrate>
+    </v-lazy>
 
     <LazyHydrate when-visible>
       <Deals id="deals" />
@@ -122,6 +129,7 @@ export default {
     return {
       model: 0,
       guides: false,
+      gifts: false,
       customers: false,
       testimonials: false,
       items: [

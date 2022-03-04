@@ -14,16 +14,16 @@ export default {
       { name: "format-detection", content: "telephone=no" },
     ],
     link: [
-      {
-        rel: "preload",
-        as: "image",
-        href: "/bg11.webp",
-      },
-      {
-        rel: "preload",
-        as: "image",
-        href: "/bg22.webp",
-      },
+      // {
+      //   rel: "preload",
+      //   as: "image",
+      //   href: "/bg11.webp",
+      // },
+      // {
+      //   rel: "preload",
+      //   as: "image",
+      //   href: "/bg22.webp",
+      // },
       {
         rel: "preload",
         as: "style",
@@ -109,10 +109,18 @@ export default {
     // https://go.nuxtjs.dev/pwa
     "@nuxtjs/pwa",
 
+    "@nuxt/image",
+
     "@nuxtjs/apollo",
 
     "@nuxtjs/dotenv",
   ],
+
+  image: {
+    cloudinary: {
+      baseURL: "https://res.cloudinary.com/djwgtizi3/image/upload/",
+    },
+  },
 
   apollo: {
     clientConfigs: {

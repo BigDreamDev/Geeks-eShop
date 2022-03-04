@@ -7,10 +7,15 @@
         max-width="374"
         dark
       >
-        <img
-          height="250"
-          class="object-contain h-64 mx-auto"
-          :src="product.attributes.picture.data[0].attributes.url"
+        <nuxt-img
+          height="265"
+          provider="cloudinary"
+          class="h-64 mx-auto"
+          quality="80"
+          fit="contain"
+          :src="
+            imgAddressClipper(product.attributes.picture.data[0].attributes.url)
+          "
         />
 
         <v-card-title>{{ product.attributes.model }} </v-card-title>
@@ -69,6 +74,8 @@
 
 <script>
 import { mdiStar, mdiStarHalf, mdiStarOff } from "@mdi/js"
+import imgAddressClipper from "~/utils/cloudinaryAddressClipper"
+
 export default {
   props: {
     product: {
@@ -88,6 +95,9 @@ export default {
     url() {
       return process.env.NUXT_PUBLIC_API_URL
     },
+  },
+  methods: {
+    imgAddressClipper,
   },
 }
 </script>

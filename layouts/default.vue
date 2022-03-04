@@ -249,7 +249,7 @@ export default {
         },
         {
           action: mdiDesktopMac,
-          active: true,
+          active: false,
           items: null,
           title: "Desktops",
         },
