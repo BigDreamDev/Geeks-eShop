@@ -14,16 +14,16 @@ export default {
       { name: "format-detection", content: "telephone=no" },
     ],
     link: [
-      // {
-      //   rel: "preload",
-      //   as: "image",
-      //   href: "/bg11.webp",
-      // },
-      // {
-      //   rel: "preload",
-      //   as: "image",
-      //   href: "/bg22.webp",
-      // },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/bg11.webp",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        href: "/bg22.webp",
+      },
       {
         rel: "preload",
         as: "style",
