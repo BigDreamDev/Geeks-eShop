@@ -127,7 +127,7 @@
         <div class="flex flex-row justify-center flex-wrap">
           <v-btn
             v-for="link in links"
-            :key="link"
+            :key="link.name"
             color="white"
             text
             rounded
@@ -222,7 +222,7 @@ export default {
         { name: "Featured Products", hash: "#featured-products", path: "/" },
         { name: "Deals", hash: "#deals", path: "/" },
         { name: "Guides", hash: "#guides", path: "/" },
-        { name: "Contact Us", hash: "", path: "/contact-us" },
+        { name: "FAQs", hash: "", path: "/faqs" },
       ],
       fab: false,
       snackbar: false,

@@ -91,7 +91,8 @@ export default {
       // "Inter+sans-serif": true,
     },
     display: "swap",
-    preconnect: true,
+    // preconnect: true,
+    preload: true,
   },
 
   snipcart: {
@@ -148,7 +149,9 @@ export default {
     name: "geeks-eshop",
     theme_color: "#a82514",
     display: "fullscreen",
-    icon: true,
+    icon: {
+      fileName: "favicon.png",
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

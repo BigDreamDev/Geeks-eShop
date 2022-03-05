@@ -1,16 +1,6 @@
 <template>
   <div>
     <section class="relative overflow-hidden">
-      <img
-        class="absolute top-0 right-0 -mr-80"
-        src="zospace-assets/lines/circle.svg"
-        alt=""
-      />
-      <img
-        class="hidden lg:block absolute bottom-0 left-0 w-96"
-        src="zospace-assets/lines/half-double-circle.svg"
-        alt=""
-      />
       <div class="relative container px-4 mx-auto">
         <div class="max-w-5xl mx-auto">
           <div class="text-center mb-10 lg:mb-16">
@@ -24,7 +14,8 @@
             <div class="w-full lg:w-1/2 px-5 mb-12 lg:mb-0">
               <div class="flex lg:mx-0">
                 <div class="w-1/3 px-4">
-                  <img
+                  <nuxt-img
+                    quality="70"
                     class="w-30 h-40 mx-auto rounded-full object-cover"
                     src="https://images.pexels.com/photos/5325840/pexels-photo-5325840.jpeg?q=80&amp;fm=jpg&amp;crop=faces&amp;cs=tinysrgb&amp;fit=crop&amp;h=940&amp;w=940"
                     alt=""
@@ -34,11 +25,6 @@
                   <div
                     class="relative inline-block mb-8 p-4 md:p-10 bg-gray-500 rounded-lg"
                   >
-                    <img
-                      class="absolute top-0 right-0 md:-mr-6 -mt-6 lg:mt-14"
-                      src="zospace-assets/images/quote-circle.svg"
-                      alt=""
-                    />
                     <p class="mb-8 md:text-lg text-gray-200">
                       Very cool company for computer hardware I have a lot of
                       things made by them in my house.
@@ -54,7 +40,8 @@
             <div class="w-full lg:w-1/2 px-5">
               <div class="flex lg:mx-0">
                 <div class="w-1/3 px-4">
-                  <img
+                  <nuxt-img
+                    quality="70"
                     class="w-30 h-40 mx-auto rounded-full object-cover object-top"
                     src="https://images.pexels.com/photos/5325893/pexels-photo-5325893.jpeg?q=80&amp;fm=jpg&amp;crop=faces&amp;cs=tinysrgb&amp;fit=crop&amp;h=940&amp;w=940"
                     alt=""
@@ -64,11 +51,6 @@
                   <div
                     class="relative inline-block mb-8 p-4 md:p-10 bg-gray-500 rounded-lg"
                   >
-                    <img
-                      class="absolute top-0 right-0 md:-mr-6 -mt-6 lg:mt-14"
-                      src="zospace-assets/images/quote-circle.svg"
-                      alt=""
-                    />
                     <p class="mb-8 md:text-lg text-gray-200">
                       Love my ROG laptop from E-Shop. Amazing quality for the
                       money I paid. Recommend this brand to all of the people
