@@ -18,7 +18,9 @@
       <div class="lg:flex lg:flex-row hidden">
         <button class="snipcart-checkout inline-flex items-center">
           <Cart />
-          <span class="snipcart-total-price px-3 font-semibold text-sm"></span>
+          <span
+            class="snipcart-total-price px-3 font-semibold text-xs sm:text-sm"
+          ></span>
         </button>
         <v-divider vertical></v-divider>
         <v-menu
@@ -124,8 +126,9 @@
         class="mt-1 ml-auto"
         text
         @click="triggerRegistrationModal"
-        >Register/Login</v-btn
       >
+        <v-icon>{{ accountIcon }}</v-icon>
+      </v-btn>
       <v-btn
         v-else
         class="mt-1 text-xs sm:text-sm ml-auto text-white"
@@ -137,7 +140,7 @@
   </div>
 </template>
 <script>
-import { mdiMenu } from "@mdi/js"
+import { mdiMenu, mdiAccount } from "@mdi/js"
 import { mapState } from "vuex"
 import LaptopsQuery from "~/apollo/queries/laptops.gql"
 import DesktopssQuery from "~/apollo/queries/desktops.gql"
@@ -150,6 +153,7 @@ export default {
   data() {
     return {
       menu: mdiMenu,
+      accountIcon: mdiAccount,
       laptops: [],
       desktops: [],
       guides: [

@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <v-app-bar class="h-16" dark>
+    <v-app-bar class="h-16 px-0" dark>
       <!-- <v-btn text color="black" class="hover:cursor-pointer">Laptops</v-btn> -->
       <Navbar class="mb-4" @toggle-mobile="toggleMobileWindow"></Navbar>
     </v-app-bar>
