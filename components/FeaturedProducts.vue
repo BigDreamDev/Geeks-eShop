@@ -7,8 +7,8 @@
     >
       Featured Products
     </h2>
-    <v-row>
-      <v-col md="6" class="relative">
+    <v-row class="flex flex-row justify-center">
+      <v-col class="relative max-w-xl">
         <div
           class="absolute top-10 sm:top-14 left-1/2 transform -translate-x-1/2 sm:translate-x-0 sm:left-1/4 z-10"
         >
@@ -24,7 +24,7 @@
         </div>
         <v-img height="500" src="/f1.png"></v-img>
       </v-col>
-      <v-col md="6" class="relative">
+      <v-col class="relative max-w-xl">
         <div
           class="absolute top-10 sm:top-14 left-1/2 transform -translate-x-1/2 sm:translate-x-0 sm:left-1/4 z-10"
         >
