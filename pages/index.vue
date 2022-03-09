@@ -28,7 +28,7 @@
           cycle
           :interval="4000"
           :show-arrows="false"
-          :height="carouselHeight"
+          :height="620"
           hide-delimiters
         >
           <v-carousel-item v-for="(item, i) in items" :key="i">
@@ -145,13 +145,13 @@ export default {
     }
   },
   computed: {
-    carouselHeight() {
-      if (process.client && typeof window !== "undefined") {
-        return window.innerHeight - 64
-      } else {
-        return 650
-      }
-    },
+    // carouselHeight() {
+    //   if (process.client && typeof window !== "undefined") {
+    //     return window.innerHeight - 64
+    //   } else {
+    //     return 650
+    //   }
+    // },
   },
 }
 </script>
