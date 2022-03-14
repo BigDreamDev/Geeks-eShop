@@ -52,7 +52,9 @@
             </v-list-item>
           </v-list>
         </v-menu>
+
         <v-divider vertical></v-divider>
+
         <v-menu
           v-if="$apollo.queries.desktops.loading === false"
           open-on-hover
@@ -82,7 +84,40 @@
             </v-list-item>
           </v-list>
         </v-menu>
+
         <v-divider vertical></v-divider>
+
+        <v-menu
+          v-if="$apollo.queries.mobiles.loading === false"
+          open-on-hover
+          offset-y
+          dark
+        >
+          <template #activator="{ on, attrs }">
+            <v-btn text dense dark v-bind="attrs" class="mt-1" v-on="on">
+              Mobiles
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item
+              v-for="mobile in mobiles.data.attributes.products.data"
+              :key="mobile.id"
+            >
+              <nuxt-link
+                class=""
+                :to="{
+                  path: `/product-details/${mobile.id}`,
+                }"
+              >
+                <v-list-item-title class="text-sm text-white hover:text-main">{{
+                  mobile.attributes.model
+                }}</v-list-item-title>
+              </nuxt-link>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+        <v-divider vertical></v-divider>
+
         <v-menu
           v-if="$apollo.queries.desktops.loading === false"
           open-on-hover
@@ -143,7 +178,8 @@
 import { mdiMenu, mdiAccount } from "@mdi/js"
 import { mapState } from "vuex"
 import LaptopsQuery from "~/apollo/queries/laptops.gql"
-import DesktopssQuery from "~/apollo/queries/desktops.gql"
+import DesktopsQuery from "~/apollo/queries/desktops.gql"
+import MobilesQuery from "~/apollo/queries/mobiles.gql"
 import Cart from "~/components/Cart.vue"
 
 export default {
@@ -156,6 +192,7 @@ export default {
       accountIcon: mdiAccount,
       laptops: [],
       desktops: [],
+      mobiles: [],
       guides: [
         { title: "Extend your PC's lifespan", id: 1 },
         { title: "Rocket League nails it", id: 2 },
@@ -186,7 +223,10 @@ export default {
       query: LaptopsQuery,
     },
     desktops: {
-      query: DesktopssQuery,
+      query: DesktopsQuery,
+    },
+    mobiles: {
+      query: MobilesQuery,
     },
   },
 }

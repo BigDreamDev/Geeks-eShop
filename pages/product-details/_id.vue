@@ -7,6 +7,7 @@
       <div class="px-8 col-span-2 sm:col-span-1 order-2 sm:order-1">
         <nuxt-img
           provider="cloudinary"
+          class="mt-8"
           :src="
             imgAddressClipper(
               product.data.attributes.picture.data[0].attributes.url
@@ -165,6 +166,7 @@
               :half-icon="half"
             ></v-rating>
             <v-btn
+              dark
               :disabled="!isRegistered"
               class="bg-main mt-3 text-white"
               @click="addReview"

@@ -1,0 +1,30 @@
+query Laptops {
+  mobiles: categorie(id: "4") {
+    data {
+      attributes {
+        name
+        products {
+          data {
+            id
+            attributes {
+              model
+              specifications
+              description
+              longDescription
+              inStock
+              price
+              type
+              picture {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

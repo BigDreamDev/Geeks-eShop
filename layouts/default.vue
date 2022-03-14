@@ -188,10 +188,12 @@ import {
   mdiInformation,
   mdiHeadQuestion,
   mdiChatQuestion,
+  mdiCellphone,
 } from "@mdi/js"
 import { mapState } from "vuex"
 import LaptopsQuery from "~/apollo/queries/laptops.gql"
-import DesktopssQuery from "~/apollo/queries/desktops.gql"
+import DesktopsQuery from "~/apollo/queries/desktops.gql"
+import MobilesQuery from "~/apollo/queries/mobiles.gql"
 import Register from "~/components/Register.vue"
 import Login from "~/components/Login.vue"
 import Navbar from "~/components/Navbar.vue"
@@ -208,10 +210,12 @@ export default {
       homeIcon: mdiHome,
       aboutIcon: mdiHeadQuestion,
       infoIcon: mdiInformation,
+      cellIcon: mdiCellphone,
       drawer: true,
       mobileWindow: false,
       laptops: [],
       desktops: [],
+      mobiles: [],
       group: null,
       btnIcon: mdiChevronUp,
       snipcartKey: process.env.SNIPCART,
@@ -252,6 +256,12 @@ export default {
           active: false,
           items: null,
           title: "Desktops",
+        },
+        {
+          action: mdiCellphone,
+          active: false,
+          items: null,
+          title: "Mobiles",
         },
       ],
     }
@@ -297,6 +307,14 @@ export default {
         }
       }
     )
+    this.items[2].items = this.mobiles?.data?.attributes.products.data.map(
+      (mobile) => {
+        return {
+          title: mobile.attributes.model,
+          id: mobile.id,
+        }
+      }
+    )
   },
   methods: {
     scroll() {
@@ -320,7 +338,10 @@ export default {
       query: LaptopsQuery,
     },
     desktops: {
-      query: DesktopssQuery,
+      query: DesktopsQuery,
+    },
+    mobiles: {
+      query: MobilesQuery,
     },
   },
 }

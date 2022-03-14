@@ -31,6 +31,11 @@
           key="desktops"
           :products="desktops.data.attributes.products.data"
         ></ProductSwiper>
+        <ProductSwiper
+          v-else-if="key === 2 && mobiles.data"
+          key="mobiles"
+          :products="mobiles.data.attributes.products.data"
+        ></ProductSwiper>
         <Spinner v-else></Spinner>
       </keep-alive>
     </client-only>
@@ -41,6 +46,7 @@
 import ProductSwiper from "./ProductSwiper.vue"
 import laptopsQuery from "~/apollo/queries/laptops.gql"
 import desktopsQuery from "~/apollo/queries/desktops.gql"
+import mobilesQuery from "~/apollo/queries/mobiles.gql"
 
 export default {
   components: {
@@ -49,9 +55,10 @@ export default {
   data() {
     return {
       ProductSwiper: "ProductSwiper",
-      tabs: ["Laptops", "Desktops", "Mobile", "Monitors"],
+      tabs: ["Laptops", "Desktops", "Mobile"],
       laptops: [],
       desktops: [],
+      mobiles: [],
     }
   },
   computed: {
@@ -75,6 +82,10 @@ export default {
     desktops: {
       prefetch: false,
       query: desktopsQuery,
+    },
+    mobiles: {
+      prefetch: false,
+      query: mobilesQuery,
     },
   },
 }
