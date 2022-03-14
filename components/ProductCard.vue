@@ -4,7 +4,7 @@
       <v-card
         transition="fade-transition"
         class="mx-4 my-12 hover:shadow-2xl"
-        max-width="374"
+        max-width="330"
         dark
       >
         <nuxt-img

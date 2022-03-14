@@ -7,7 +7,9 @@
       <div class="px-8 col-span-2 sm:col-span-1 order-2 sm:order-1">
         <nuxt-img
           provider="cloudinary"
+          height="500"
           class="mt-8"
+          fit="cover"
           :src="
             imgAddressClipper(
               product.data.attributes.picture.data[0].attributes.url
@@ -155,8 +157,9 @@
               v-model="review"
               dark
               outlined
+              :disabled="!isRegistered"
               name="input-7-4"
-              label="Add a Review"
+              :label="textAreaPlaceholder"
             ></v-textarea>
             <span>Pick your rating</span
             ><v-rating
@@ -169,7 +172,9 @@
               dark
               :disabled="!isRegistered"
               class="bg-main mt-3 text-white"
+              v-bind="attrs"
               @click="addReview"
+              v-on="on"
               >Submit</v-btn
             >
           </div>
@@ -208,6 +213,9 @@ export default {
     }
   },
   computed: {
+    textAreaPlaceholder() {
+      return this.isRegistered ? "Add a review" : "Login to add a review"
+    },
     url() {
       return process.env.NUXT_PUBLIC_API_URL
     },
